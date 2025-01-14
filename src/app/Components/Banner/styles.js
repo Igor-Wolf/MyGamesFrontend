@@ -34,6 +34,13 @@ export const Container = styled.div`
 
     height: 300px;
   }
+
+  @media (max-width: 400px) {
+
+    height: 250px;
+
+
+  }
           
    
 `
@@ -47,4 +54,31 @@ export const ImageBanner = styled.img`
 
 
 
+`
+
+export const ImageTitle = styled.div`
+  position: relative;
+  bottom: 100px;
+  left: 30px;
+  right: 10px;
+
+  color: white;  
+  background-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  text-shadow: 
+  -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7), 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 8px rgba(0, 0, 0, 0.9);
+  font-size: 2rem;
+  max-width: 70%;
+  width:70%;
+  display:flex;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  white-space: normal; /* Permite a quebra de linha quando necessário */
+
+  @media (max-width: 600px) {
+
+    font-size: 1.5rem;
+
+  }
 `
