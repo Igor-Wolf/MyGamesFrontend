@@ -2,6 +2,7 @@
 
 import { Footer } from "./Components/Footer";
 import { Header } from "./Components/Header";
+import { MobileHeader } from "./Components/MobileHeader";
 import "./globals.css";
 
 export default function RootLayout({ children }) {
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
           <Header></Header>
         {children}
         <Footer></Footer>
+        <MobileHeader></MobileHeader>
        
     </body>
   </html>

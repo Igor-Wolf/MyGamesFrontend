@@ -16,6 +16,7 @@ export const Conainer = styled.div`
 
 
 
+
 `
 
 
@@ -37,6 +38,15 @@ export const TitleText = styled.div`
     font-size: 1.2rem;
     
     
+
+
+`
+
+export const MainContent = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1
 
 
 `

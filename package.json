@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
-    "@iconify/react": "^5.1.0",
+    "@iconify/react": "^5.2.0",
     "axios": "^1.7.9",
+    "bootstrap-icons": "^1.11.3",
     "date-fns": "^4.1.0",
     "next": "15.1.0",
     "react": "^19.0.0",

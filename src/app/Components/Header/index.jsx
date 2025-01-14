@@ -44,17 +44,17 @@ const Header = () => {
       <MenuRight>
         <li>
           <Link href={"/"}>
-            <Row>Inicio</Row>
+            <Row>Home</Row>
+          </Link>
+        </li>
+        <li>
+          <Link href={"/Search"}>
+            <Row>Search</Row>
           </Link>
         </li>
         <li>
           <Link href={"/"}>
-            <Row>Busca</Row>
-          </Link>
-        </li>
-        <li>
-          <Link href={"/"}>
-            <Row>Sobre</Row>
+            <Row>About</Row>
           </Link>
         </li>
 

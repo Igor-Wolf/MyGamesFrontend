@@ -9,6 +9,7 @@ export const Conainer = styled.div`
     flex-direction: column;
     width:100vw;
     background-color: black;
+    flex: 1;
 
 
     padding-top: 60px;
@@ -25,7 +26,7 @@ export const TitleContainer = styled.div`
     flex-direction: row;
     padding: 1rem;
     gap: 1rem;
-    width: 100%
+    width: 100%;
 
 
 `
@@ -50,6 +51,7 @@ export const Content = styled.div`
     color: white;
     align-items: center;
     padding-top: 1rem;
+    flex: 1;
 
 
 

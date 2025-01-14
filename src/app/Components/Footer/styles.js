@@ -33,6 +33,7 @@ export const Wrapper = styled.div`
     
     
     padding-bottom: 1rem;
+    margin-bottom:75px;
 
 
   }

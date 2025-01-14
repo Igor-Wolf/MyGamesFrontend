@@ -74,7 +74,12 @@ export default function Home() {
 
         // Verificando o status da requisição de login (response)
         if (response.status !== 200) {
-          //router.push("/");
+          router.push("/Login");
+        }
+        else if (game.status !== 200) {
+          
+          router.push("/");
+
         }
       } catch (error) {
         console.error("Erro nas requisições:", error);
