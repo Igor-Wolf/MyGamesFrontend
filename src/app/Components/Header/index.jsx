@@ -60,7 +60,7 @@ const Header = () => {
 
         <li>
           <MenuTogle onMouseEnter={toggleMenu} onMouseLeave={toggleMenu} onClick={toggleMenu}>
-            Minha Conta
+            My Account
             {isMenuOpen && (
               <MiniMenu>
                 <ul>

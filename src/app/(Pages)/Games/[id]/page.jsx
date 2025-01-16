@@ -256,7 +256,7 @@ export default function Home() {
             {game && dlcGame.length > 0 && (
               <>
                 <TitleContainer>
-                  <TitleText>Dlcs</TitleText>
+                  <TitleText>DLCs & Editions</TitleText>
                   <Divisor></Divisor>
                 </TitleContainer>
                 <SlideGames gameList={dlcGame}></SlideGames>
