@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../Services/api";
 import { useRouter } from "next/navigation";
+import { Icon } from "@iconify/react";
+
 import Link from "next/link";
 import {
   ButtonsContainer,
@@ -206,16 +208,22 @@ export default function MyList() {
                   </ContentText>
                   <ButtonsContainer>
                     <Button
-                      title="Edit Desc."
+                      title="Edit"
                       variant="primary"
                       onClick={() => openPopup(game.id, game.description)}
-                    ></Button>
-                    <Button title="Prices" variant="secondary"></Button>
+                    >
+                      <Icon icon="raphael:edit" />
+                    </Button>
+                    <Button title="Prices" variant="secondary">
+                      <Icon icon="material-symbols:attach-money-rounded" />
+                    </Button>
                     <Button
                       title="Remove"
                       variant="danger"
                       onClick={() => handleClickButtonRemove(game.id)}
-                    ></Button>
+                    >
+                      <Icon icon="mdi:remove-bold" />
+                    </Button>
                   </ButtonsContainer>
                 </ImportantContent>
               </ContainerRow>

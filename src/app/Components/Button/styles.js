@@ -8,6 +8,12 @@ export const ButtonContainer = styled.button`
     margin: 0.5rem;
     min-width: 120px;
     height: 33px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    
     
     font-size: 1rem;
     font-weight: 600;
@@ -51,3 +57,4 @@ export const ButtonContainer = styled.button`
         color: rgb(21, 117, 9);  // Cor do texto para "outline"
     `}
 `;
+

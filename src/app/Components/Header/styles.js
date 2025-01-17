@@ -94,6 +94,7 @@ export const Row = styled.div`
 
     color: white;
     font-size: 1.05rem;
+    padding: 0.2rem;
 
     &:hover {
 
