@@ -11,7 +11,7 @@ import { Loading } from "../../Components/Loading";
 import { ButtonsBusca } from "@/app/Components/ButtonsBusca";
 import { Card } from "@/app/Components/Card";
 
-export default function Home() {
+export default function Search() {
   const router = useRouter();
   const [data, setData] = useState(200);
   const [gamesList, setGameList] = useState([]);

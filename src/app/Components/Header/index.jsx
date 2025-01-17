@@ -65,6 +65,16 @@ const Header = () => {
               <MiniMenu>
                 <ul>
                   <li>
+                    <Link href={"/MyList"}>
+                      <Row>MyList</Row>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={"/"}>
+                      <Row>WishList</Row>
+                    </Link>
+                  </li>
+                  <li>
                     <Link href={"/MyAccount"}>
                       <Row>Config.</Row>
                     </Link>
@@ -87,6 +97,16 @@ const Header = () => {
             {isMenuOpen && (
               <MiniMenu2>
                 <ul>
+                  <li>
+                    <Link href={"/MyList"}>
+                      <Row>MyList</Row>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={"/"}>
+                      <Row>WishList</Row>
+                    </Link>
+                  </li>
                   <li>
                     <Link href={"/MyAccount"}>
                       <Row>Config.</Row>

@@ -25,8 +25,9 @@ import { Divisor } from "../../../Components/Divisor";
 import { SlideScreenshots } from "@/app/Components/SlideScreenshots";
 import ReadMore from "@/app/Components/ReadMore";
 import { Loading } from "@/app/Components/Loading";
+import { Button } from "@/app/Components/Button";
 
-export default function Home() {
+export default function Games() {
   const params = useParams();
   const itemId = params?.id ? params.id : null;
   const router = useRouter();
@@ -38,10 +39,10 @@ export default function Home() {
   const [parentGames, setParentGames] = useState(null);
   const [screenshots, setScreenshots] = useState(null);
 
+  const auth = localStorage.getItem("token");
  
 
   useEffect(() => {
-    const auth = localStorage.getItem("token");
 
     if (!auth || !itemId) {
       router.push("/Login");
@@ -88,6 +89,56 @@ export default function Home() {
 
     req();
   }, []); // Dependências vazias, para que seja executado apenas uma vez ao carregar o componente
+
+  const handleClickButtonAddList = async () => { 
+
+    const add = {
+      id: game.id,
+      background_image: game.background_image,
+      name: game.name,
+      released: game.released,
+      genres: game.genres,
+      description: "",
+    }
+    try {
+            const response = await api.patch("/myList/addGameList", add ,{
+              headers: {
+                Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
+              },
+            });
+            setData(response.status);
+            // Verificando o status da requisição de login (response)
+            if (response.status !== 200) {
+              router.push("/Login");
+            }
+          } catch (error) {
+            console.error("Erro nas requisições:", error);
+          }
+
+
+
+  }
+  const handleClickButtonRemoveList = async () => { 
+
+    
+    try {
+      const response = await api.patch(`/myList/removeGameList/${game.id}`, {},{
+              headers: {
+                Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
+              },
+            });
+            setData(response.status);
+            // Verificando o status da requisição de login (response)
+            if (response.status !== 200) {
+              router.push("/Login");
+            }
+          } catch (error) {
+            console.error("Erro nas requisições:", error);
+          }
+
+
+
+  }
 
   const [openItem, setOpenItem] = useState(null);
 
@@ -239,6 +290,8 @@ export default function Home() {
                       </AccordionItem>
                     ))}
                   </AccordionWrapper>
+                  <Button title="AddList" variant="secondary" onClick={() => handleClickButtonAddList( )}></Button>
+                  <Button title="RemoveList" variant="secondary" onClick={() => handleClickButtonRemoveList( )}></Button>
                 </TextInfo>
                
               </SubContent>
