@@ -10,7 +10,7 @@ const Footer = () => {
       <Divisor />
       <TextContentExternal>
         <TextContent>
-          <p>© 2024. Todos os Direitos Reservados à Igor Barbosa. Desenvolvido por <a href="https://github.com/Igor-Wolf" style={{ fontWeight: 600, color:  'white' }} > IB </a>
+          <p>© 2024. All Rights Reserved to Igor Barbosa. Database provided by <a href="https://rawg.io/" style={{ fontWeight: 600, color:  'white' }} > RAWG </a> and <a href="https://isthereanydeal.com/" style={{ fontWeight: 600, color:  'white' }} > Isthereanydeal </a>.  Developed by <a href="https://github.com/Igor-Wolf" style={{ fontWeight: 600, color:  'white' }} > IB </a>
           </p>
         </TextContent>
       </TextContentExternal>

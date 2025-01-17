@@ -31,18 +31,18 @@ import Link from "next/link";
 // Esquema de validação
 const loginSchema = yup
   .object({
-    user: yup.string().required("Usuário é obrigatório"),
-    name: yup.string().required("Nome é obrigatório"),
+    user: yup.string().required("Username is required"),
+    name: yup.string().required("Name is required"),
     email: yup
       .string()
-      .email("É necessário ser Email válido")
-      .required("Email é obrigatório"),
-    passwordHash: yup.string().required("Senha é obrigatória"),
+      .email("A valid email is required")
+      .required("Email is required"),
+    passwordHash: yup.string().required("Password is required"),
     passwordHash2: yup
       .string()
-      .required("Preenchimento obrigatório")
-      .oneOf([yup.ref("passwordHash")], "As senhas devem ser iguais"),
-    birthday: yup.string().required("Data de nascimento é obrigatória"),
+      .required("Required field")
+      .oneOf([yup.ref("passwordHash")], "The passwords must match"),
+    birthday: yup.string().required("Date of birth is required"),
   })
   .required();
 
@@ -148,16 +148,16 @@ export default function EditAccount() {
         }
       );
       if (response.status === 200) {
-       setResponseData("Dados atualizado com sucesso") 
+       setResponseData("Data updated successfully") 
       }
       reset();
       //router.push("/MyAccount");
     } catch (error) {
       
       if (error.response.status === 409) {
-        setResponseData("Email já existente, tente novamente") 
+        setResponseData("Email already exists, please try again") 
       } else {
-        setResponseData("Erro no servidor") 
+        setResponseData("Server error") 
 
       }
     }
@@ -176,14 +176,14 @@ export default function EditAccount() {
           
          
       <ContainerIntern>
-        <Title>Editar Conta</Title>
+        <Title>Edit Account</Title>
 
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Text>Confirme os campos abaixo</Text>
+          <Text>Please confirm the fields below</Text>
           <Divisor></Divisor>
           <FormGroup>
             <WrapperUser>
-              <Label htmlFor="user">Usuário:</Label>
+              <Label htmlFor="user">User:</Label>
               <Label htmlFor="user">{data.user}</Label>
               
             </WrapperUser>
@@ -192,7 +192,7 @@ export default function EditAccount() {
 
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="name">Nome:</Label>
+              <Label htmlFor="name">Name:</Label>
               <Controller
                 name="name"
                 control={control}
@@ -202,7 +202,7 @@ export default function EditAccount() {
                     type="text"
                     id="name"                    
                     {...field}
-                    placeholder="Digite seu nome completo"
+                    placeholder="Complete name"
                   />
                 )}
               />
@@ -222,7 +222,7 @@ export default function EditAccount() {
                     id="email"
                     value={data.email}
                     {...field}
-                    placeholder="Digite seu email"
+                    placeholder="Email"
                   />
                 )}
               />
@@ -231,7 +231,7 @@ export default function EditAccount() {
           </FormGroup>
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="passwordHash">Senha:</Label>
+              <Label htmlFor="passwordHash">Password:</Label>
               <Controller
                 name="passwordHash"
                 control={control}
@@ -241,7 +241,7 @@ export default function EditAccount() {
                     type="password"
                     id="passwordHash"
                     {...field}
-                    placeholder="Digite sua senha"
+                    placeholder="Password"
                   />
                 )}
               />
@@ -252,7 +252,7 @@ export default function EditAccount() {
           </FormGroup>
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="passwordHash2">Confirmar Senha:</Label>
+              <Label htmlFor="passwordHash2">Confirm Password:</Label>
               <Controller
                 name="passwordHash2"
                 control={control}
@@ -262,7 +262,7 @@ export default function EditAccount() {
                     type="password"
                     id="passwordHash2"
                     {...field}
-                    placeholder="Confirme a senha"
+                    placeholder="Confirm Password"
                   />
                 )}
               />
@@ -273,7 +273,7 @@ export default function EditAccount() {
           </FormGroup>
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="birthday">Aniversário:</Label>
+              <Label htmlFor="birthday">Birthday:</Label>
               <Controller
                 name="birthday"
                 control={control}
@@ -283,7 +283,7 @@ export default function EditAccount() {
                     type="Date"
                     id="birthday"
                     {...field}
-                    placeholder="Digite seu aniversário"
+                    placeholder="Birthday"
                   />
                 )}
               />
@@ -294,7 +294,7 @@ export default function EditAccount() {
           </FormGroup>
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="profilePictureUrl">Foto Perfil:</Label>
+              <Label htmlFor="profilePictureUrl">Picture:</Label>
               <Controller
                 name="profilePictureUrl"
                 control={control}
@@ -304,7 +304,7 @@ export default function EditAccount() {
                     type="text"
                     id="profilePictureUrl"
                     {...field}
-                    placeholder="Digite a url da imagem"
+                    placeholder="Image URL"
                   />
                 )}
               />
@@ -323,7 +323,7 @@ export default function EditAccount() {
                     type="text"
                     id="bio"
                     {...field}
-                    placeholder="Digite sua biografia"
+                    placeholder="Bio"
                   />
                 )}
               />
@@ -331,13 +331,13 @@ export default function EditAccount() {
            
           </FormGroup>
           <Button
-            title="Confirmar"
+            title="Confirm"
             variant="primary"
             type="submit"
             disabled={!isValid}
           />
           <Link href={`/MyAccount`}>
-            <TextLink>Voltar</TextLink>
+            <TextLink>Return</TextLink>
               </Link>
               {responseData ?
                                     (<pre>
@@ -347,7 +347,7 @@ export default function EditAccount() {
                                       </pre>) : (<p></p>)}
         </Form>
           </ContainerIntern>
-          </pre>) : (<p>Carregando...</p>)}
+          </pre>) : (<p>Loading...</p>)}
     </Container>
   );
 }

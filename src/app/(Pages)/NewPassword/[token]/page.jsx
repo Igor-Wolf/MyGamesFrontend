@@ -17,8 +17,8 @@ import Link from "next/link";
 
 // ------------------------------------------------------Esquema de validação
 const loginSchema = yup.object({
-  passwordHash: yup.string().required("Senha é obrigatória"),
-  passwordHash2: yup.string().required("Preenchimento obrigatório").oneOf([yup.ref('passwordHash')], "As senhas devem ser iguais")
+  passwordHash: yup.string().required("Password is required"),
+  passwordHash2: yup.string().required("Required field").oneOf([yup.ref('passwordHash')], "The passwords must match")
  
 }).required();
 
@@ -57,18 +57,17 @@ export default function NewPassword() {
     
     if (response.status === 200) {
 
-      setResponseData("Senha alterada con sucesso")
+      setResponseData("Password successfully changed")
 
       
     } else if (response.status === 400) {
 
-      setResponseData("Senha inválida")
+      setResponseData("Invalid password")
 
       
     } else {
 
-      setResponseData("Erro no servidor")
-
+      setResponseData("Server Error")
       
     }
 
@@ -105,14 +104,14 @@ export default function NewPassword() {
       </VideoBg>
       <VideoBgColor></VideoBgColor>
       <ContainerIntern>
-        <Title>Nova Senha</Title>
+        <Title>New Password</Title>
         
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Text>Informe a nova senha</Text>
+          <Text>Enter the new password</Text>
         <Divisor></Divisor>
           <FormGroup>
             <Wrapper>
-            <Label htmlFor="passwordHash">Senha:</Label>
+            <Label htmlFor="passwordHash">Password:</Label>
             <Controller
 name="passwordHash"
 control={control}
@@ -122,7 +121,7 @@ render={({ field }) => (
   type="password"
   id="passwordHash"
   {...field}
-  placeholder="Digite sua nova senha"
+  placeholder="Enter your new password"
   />
 )}
 />
@@ -131,7 +130,7 @@ render={({ field }) => (
           </FormGroup>
           <FormGroup>
             <Wrapper>
-            <Label htmlFor="passwordHash2">Confirmar Senha:</Label>
+            <Label htmlFor="passwordHash2">Confirm Password:</Label>
             <Controller
 name="passwordHash2"
 control={control}
@@ -141,7 +140,7 @@ render={({ field }) => (
   type="password"
   id="passwordHash2"
   {...field}
-  placeholder="Confirme sua nova senha"
+  placeholder="Confirm your new password"
   />
 )}
 />

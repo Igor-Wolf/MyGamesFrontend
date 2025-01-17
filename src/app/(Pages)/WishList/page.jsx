@@ -24,7 +24,7 @@ import { CardList } from "@/app/Components/CardList";
 import { Button } from "@/app/Components/Button";
 import { PopupDescription } from "@/app/Components/PopupDescription";
 
-export default function MyList() {
+export default function WishList() {
   const router = useRouter();
   const [data, setData] = useState(200);
   const [gamesList, setGameList] = useState([]);
@@ -51,7 +51,7 @@ export default function MyList() {
               Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
             },
           }),
-          api.get(`/myList/GameList`, {
+          api.get(`/myList/WishList`, {
             headers: {
               Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
             },
@@ -87,7 +87,7 @@ export default function MyList() {
   const handleClickButtonRemove = async (id) => {
     try {
       const response = await api.patch(
-        `/myList/removeGameList/${id}`,
+        `/myList/removeWishList/${id}`,
         {},
         {
           headers: {
@@ -115,7 +115,7 @@ export default function MyList() {
   const addDescriptionGame = async (id, description) => {
     try {
       const response = await api.patch(
-        `/myList/addGameListDescription`,
+        `/myList/addWishListDescription`,
         {
           id: id,
           description: description,
@@ -184,7 +184,7 @@ export default function MyList() {
           <Banner></Banner>
           <MainContent>
             <TitleContainer>
-              <TitleText>MyList</TitleText>
+              <TitleText>WishList</TitleText>
               <Divisor></Divisor>
             </TitleContainer>
 

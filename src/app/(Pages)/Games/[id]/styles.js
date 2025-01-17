@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 
 
-
-
 export const Conainer = styled.div`
 
     display: flex;
@@ -53,8 +51,6 @@ export const Content = styled.div`
     padding-top: 1rem;
     flex: 1;
 
-
-
 `
 
 export const MainContent = styled.div`
@@ -75,10 +71,7 @@ export const MainContent = styled.div`
     }
 
 
-
-
 `
-
 
 export const SubContent = styled.div`
 
@@ -140,8 +133,6 @@ export const ImageGame = styled.img`
     margin-bottom: 0.5rem;
     
 
-
-
 `
 
 export const AccordionWrapper = styled.div`
@@ -195,7 +186,21 @@ export const ButtonsWrapper = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
+    max-width: 100%;
+    gap: 1rem;
 
+`
+
+
+export const TextRsponse = styled.div`
+
+width:100%;
+font-weight:600;
+  color: orange;
+  word-wrap: break-word;
+white-space: normal; 
+  text-align: center;
+  
 `
 
 

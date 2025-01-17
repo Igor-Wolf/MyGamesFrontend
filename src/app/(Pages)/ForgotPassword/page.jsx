@@ -17,7 +17,7 @@ import Link from "next/link";
 
 // ------------------------------------------------------Esquema de validação
 const loginSchema = yup.object({
-  email: yup.string().email().required("Usuário é obrigatório"),
+  email: yup.string().email("A valid email is required").required("Email is required"),
  
 }).required();
 
@@ -49,17 +49,17 @@ export default function ForgotPassword() {
 
     if (response.status === 200) {
 
-      setResponseData("Email de validação enviado")
+      setResponseData("Validation email sent")
 
       
     } else if (response.status === 204) {
 
-      setResponseData("Email inválido")
+      setResponseData("Invalid Email")
 
       
     } else {
 
-      setResponseData("Erro no servidor")
+      setResponseData("Server Error")
 
       
     }
@@ -89,10 +89,10 @@ export default function ForgotPassword() {
       </VideoBg>
       <VideoBgColor></VideoBgColor>
       <ContainerIntern>
-        <Title>Esqueci a senha</Title>
+        <Title>Forgot my password</Title>
         
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Text>Informe o email cadastrado</Text>
+          <Text>Enter the registered email</Text>
         <Divisor></Divisor>
           <FormGroup>
             <Wrapper>
@@ -106,7 +106,7 @@ render={({ field }) => (
   type="text"
   id="email"
   {...field}
-  placeholder="Digite seu email"
+  placeholder="Email"
   />
 )}
 />
@@ -114,7 +114,7 @@ render={({ field }) => (
             {errors.email && <ErrorBox>{errors.email.message}</ErrorBox>}
           </FormGroup>
           
-          <Button title="Recuperar" variant="primary" type="submit" disabled={!isValid} />
+          <Button title="Recover" variant="primary" type="submit" disabled={!isValid} />
           <Link href={`/Login`}>
               <TextLink>Login</TextLink>
           </Link>

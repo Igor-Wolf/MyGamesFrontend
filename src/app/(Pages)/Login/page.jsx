@@ -17,8 +17,8 @@ import Link from "next/link";
 
 // ------------------------------------------------------Esquema de validação
 const loginSchema = yup.object({
-  user: yup.string().required("Usuário é obrigatório"),
-  passwordHash: yup.string().required("Senha é obrigatória"),
+  user: yup.string().required("Username is required"),
+  passwordHash: yup.string().required("Password is required"),
 }).required();
 
 
@@ -55,14 +55,14 @@ export default function Login() {
       router.push("/")
     } else if (response.status === 409) {
       
-      setResponseData("Realize a autenticação no email cadastrado")
+      setResponseData("Authenticate using the registered email")
     }
     else if (response.status === 401) {
       
-      setResponseData("Usuário ou senha inválidos")
+      setResponseData("Invalid username or password")
     }
     else {
-      setResponseData("Erro no servidor")
+      setResponseData("Server Error")
 
     }
     
@@ -94,11 +94,11 @@ const req = async (body) => {
         <Title>Login</Title>
         
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Text>Utilize o usuário e senha para logar</Text>
+          <Text>Login with your username and password</Text>
         <Divisor></Divisor>
           <FormGroup>
             <Wrapper>
-            <Label htmlFor="user">Usuário:</Label>
+            <Label htmlFor="user">User:</Label>
             <Controller
 name="user"
 control={control}
@@ -108,7 +108,7 @@ render={({ field }) => (
   type="text"
   id="user"
   {...field}
-  placeholder="Digite seu usuário"
+  placeholder="User"
   />
 )}
 />
@@ -118,7 +118,7 @@ render={({ field }) => (
           <FormGroup>
             <Wrapper>
 
-            <Label htmlFor="passwordHash">Senha:</Label>
+            <Label htmlFor="passwordHash">Password:</Label>
             <Controller
               name="passwordHash"
               control={control}
@@ -128,7 +128,7 @@ render={({ field }) => (
                 type="password"
                 id="passwordHash"
                 {...field}
-                placeholder="Digite sua senha"
+                placeholder="Password"
                 />
               )}
               />
@@ -149,17 +149,17 @@ render={({ field }) => (
         />
       )}
     />
-    <Text>Lembrar a senha?</Text>
+    <Text>Remember me?</Text>
             </RememberPass>
               <Text2>|</Text2>
 
           <Link href={`/ForgotPassword`}>
-              <TextLink>Esqueceu a senha?</TextLink>
+              <TextLink>Forgot your password?</TextLink>
           </Link>
           </Wrapper2>
           <Button title="Login" variant="primary" type="submit" disabled={!isValid} />
           <Link href={`/CreateAccount`}>
-              <TextLink>Criar nova conta</TextLink>
+              <TextLink>Create a new account</TextLink>
           </Link>
           {responseData ?
             (<pre>

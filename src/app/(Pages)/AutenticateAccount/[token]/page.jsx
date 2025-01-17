@@ -17,8 +17,8 @@ import Link from "next/link";
 
 // ------------------------------------------------------Esquema de validação
 const loginSchema = yup.object({
-  passwordHash: yup.string().required("Senha é obrigatória"),
-  passwordHash2: yup.string().required("Preenchimento obrigatório").oneOf([yup.ref('passwordHash')], "As senhas devem ser iguais")
+  passwordHash: yup.string().required("Password is required"),
+  passwordHash2: yup.string().required("Required field").oneOf([yup.ref('passwordHash')], "The passwords must match")
  
 }).required();
 
@@ -84,7 +84,7 @@ export default function AutenticateAccount() {
       {data.status === 200 ? <pre>
 
       <ContainerIntern>
-        <Title>Conta Autenticada</Title>        
+        <Title>Authenticated account</Title>        
         <Form>          
           <Link href={`/Login`}>
           <Button title="Login" variant="secondary"/>
@@ -93,7 +93,7 @@ export default function AutenticateAccount() {
         </Form>
       </ContainerIntern>
       </pre>: <ContainerIntern>
-        <Title2>Erro conta não autenticada</Title2>        
+        <Title2>Error: account not authenticated</Title2>        
         
       </ContainerIntern>}
     </Container>

@@ -4,9 +4,9 @@ export const ButtonContainer = styled.button`
     border-radius: 0.40rem;
     position: relative;
     color: black;
-    padding: 2px 12px;
-    margin: 0.5rem;
-    min-width: 120px;
+    padding: 2px 8px;
+    margin-top:0.5rem;
+    min-width: 110px;
     height: 33px;
     display: flex;
     flex-direction: row;

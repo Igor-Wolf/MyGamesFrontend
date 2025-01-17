@@ -67,6 +67,7 @@ export const WrapperButtons = styled.div`
     justify-content: flex-start;
     align-items: center;
     margin-top: 1rem;
+    margin-bottom: 1rem;
 
     
 

@@ -70,7 +70,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href={"/"}>
+                    <Link href={"/WishList"}>
                       <Row>WishList</Row>
                     </Link>
                   </li>
@@ -103,7 +103,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href={"/"}>
+                    <Link href={"/WishList"}>
                       <Row>WishList</Row>
                     </Link>
                   </li>

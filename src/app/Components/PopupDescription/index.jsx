@@ -24,17 +24,17 @@ const PopupDescription = ({ onSave, onClose, chosenId, description  }) => {
   return (
     <PopupOverlay>
       <PopupContent>
-        <h2>Description</h2>
+        <h2>Comment</h2>
         <Input
           type="text"
           value={input}
           onChange={handleInputChange}
-          placeholder="Digite algo"
+          placeholder="Type Something"
         />
 
         <ButtonContainer>
-          <Button onClick={handleSaveClick}>Salvar</Button>
-          <Button onClick={onClose}>Fechar</Button>
+          <Button onClick={handleSaveClick}>Save</Button>
+          <Button onClick={onClose}>Close</Button>
         </ButtonContainer>
       </PopupContent>
     </PopupOverlay>

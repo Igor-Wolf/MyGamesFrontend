@@ -30,12 +30,12 @@ import Link from "next/link";
 // ------------------------------------------------------Esquema de validação
 const loginSchema = yup
   .object({
-    user: yup.string().required("Usuário é obrigatório"),
-    name: yup.string().required("Nome é obrigatório"),
-    email: yup.string().email("É necessário ser Email valido").required("Email é obrigatório"),
-    passwordHash: yup.string().required("Senha é obrigatória"),
-    passwordHash2: yup.string().required("Preenchimento obrigatório").oneOf([yup.ref('passwordHash')], "As senhas devem ser iguais"),
-    birthday: yup.string().required("Data de nascimento é obrigatória") // Verifica se a data foi preenchida
+    user: yup.string().required("Username is required"),
+    name: yup.string().required("Name is required"),
+    email: yup.string().email("A valid email is required").required("Email is required"),
+    passwordHash: yup.string().required("Password is required"),
+    passwordHash2: yup.string().required("Required field").oneOf([yup.ref('passwordHash')], "The passwords must match"),
+    birthday: yup.string().required("Date of birth is required") // Verifica se a data foi preenchida
      
 
   })
@@ -113,14 +113,14 @@ export default function CreateAccount() {
       </VideoBg>
       <VideoBgColor></VideoBgColor>
       <ContainerIntern>
-        <Title>Criar Conta</Title>
+        <Title>Create Account</Title>
 
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Text>Preencha os campos abaixo</Text>
+          <Text>Fill in the fields below</Text>
           <Divisor></Divisor>
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="user">Usuário:</Label>
+              <Label htmlFor="user">User:</Label>
               <Controller
                 name="user"
                 control={control}
@@ -130,7 +130,7 @@ export default function CreateAccount() {
                     type="text"
                     id="user"
                     {...field}
-                    placeholder="Digite seu usuário"
+                    placeholder="Username"
                   />
                 )}
               />
@@ -140,7 +140,7 @@ export default function CreateAccount() {
 
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="name">Nome:</Label>
+              <Label htmlFor="name">Name:</Label>
               <Controller
                 name="name"
                 control={control}
@@ -150,7 +150,7 @@ export default function CreateAccount() {
                     type="text"
                     id="name"
                     {...field}
-                    placeholder="Digite seu nome completo"
+                    placeholder="Complete Name"
                   />
                 )}
               />
@@ -169,7 +169,7 @@ export default function CreateAccount() {
                     type="text"
                     id="email"
                     {...field}
-                    placeholder="Digite seu email"
+                    placeholder="Email"
                   />
                 )}
               />
@@ -178,7 +178,7 @@ export default function CreateAccount() {
           </FormGroup>
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="passwordHash">Senha:</Label>
+              <Label htmlFor="passwordHash">Password:</Label>
               <Controller
                 name="passwordHash"
                 control={control}
@@ -188,7 +188,7 @@ export default function CreateAccount() {
                     type="password"
                     id="passwordHash"
                     {...field}
-                    placeholder="Digite sua senha"
+                    placeholder="Password"
                   />
                 )}
               />
@@ -199,7 +199,7 @@ export default function CreateAccount() {
           </FormGroup>
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="passwordHash2">Confirmar Senha:</Label>
+              <Label htmlFor="passwordHash2">Confirm password:</Label>
               <Controller
                 name="passwordHash2"
                 control={control}
@@ -209,7 +209,7 @@ export default function CreateAccount() {
                     type="password"
                     id="passwordHash2"
                     {...field}
-                    placeholder="Confirme a senha"
+                    placeholder="Confirm password"
                   />
                 )}
               />
@@ -220,7 +220,7 @@ export default function CreateAccount() {
           </FormGroup>
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="birthday">Aniversário:</Label>
+              <Label htmlFor="birthday">Birthday:</Label>
               <Controller
                 name="birthday"
                 control={control}
@@ -230,7 +230,7 @@ export default function CreateAccount() {
                     type="Date"
                     id="birthday"
                     {...field}
-                    placeholder="Digite seu aniversário"
+                    placeholder="Birthday"
                   />
                 )}
               />
@@ -241,7 +241,7 @@ export default function CreateAccount() {
           </FormGroup>
           <FormGroup>
             <Wrapper>
-              <Label htmlFor="profilePictureUrl">Foto Perfil:</Label>
+              <Label htmlFor="profilePictureUrl">Picture:</Label>
               <Controller
                 name="profilePictureUrl"
                 control={control}
@@ -251,7 +251,7 @@ export default function CreateAccount() {
                     type="text"
                     id="profilePictureUrl"
                     {...field}
-                    placeholder="Digite a url da imagem"
+                    placeholder="Image URL"
                   />
                 )}
               />
@@ -270,7 +270,7 @@ export default function CreateAccount() {
                     type="text"
                     id="bio"
                     {...field}
-                    placeholder="Digite sua biografia"
+                    placeholder="Bio"
                   />
                 )}
               />
@@ -278,13 +278,13 @@ export default function CreateAccount() {
            
           </FormGroup>
           <Button
-            title="Criar"
+            title="Create"
             variant="primary"
             type="submit"
             disabled={!isValid}
           />
           <Link href={`/Login`}>
-            <TextLink>Fazer Login</TextLink>
+            <TextLink>Login</TextLink>
           </Link>
           {responseData ?
                       (<pre>

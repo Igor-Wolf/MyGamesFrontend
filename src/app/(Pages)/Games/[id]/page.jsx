@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { api } from "../../../Services/api";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
+import { Icon } from "@iconify/react";
+
 import {
   AccordionContent,
   AccordionHeader,
@@ -17,6 +19,7 @@ import {
   SubContent,
   TextInfo,
   TextInfoInternal,
+  TextRsponse,
   TitleContainer,
   TitleText,
 } from "./styles";
@@ -39,6 +42,8 @@ export default function Games() {
   const [gameSeries, setGameSeries] = useState(null);
   const [parentGames, setParentGames] = useState(null);
   const [screenshots, setScreenshots] = useState(null);
+
+  const [responseData, setResponseData] = useState(null);
 
   const auth = localStorage.getItem("token");
 
@@ -102,12 +107,40 @@ export default function Games() {
         },
       });
       setData(response.status);
+      setResponseData("Game added to the list");
+
       // Verificando o status da requisição de login (response)
       if (response.status !== 200) {
-        router.push("/Login");
+        setResponseData("It was not possible to add the list");
       }
     } catch (error) {
-      console.error("Erro nas requisições:", error);
+      setResponseData("It was not possible to add the list");
+    }
+  };
+  const handleClickButtonAddWishList = async () => {
+    const add = {
+      id: game.id,
+      background_image: game.background_image,
+      name: game.name,
+      released: game.released,
+      genres: game.genres,
+      description: "",
+    };
+    try {
+      const response = await api.patch("/myList/addWishList", add, {
+        headers: {
+          Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
+        },
+      });
+      setData(response.status);
+      setResponseData("Game added to the wishlist");
+
+      // Verificando o status da requisição de login (response)
+      if (response.status !== 200) {
+        setResponseData("It was not possible to add the wishlist");
+      }
+    } catch (error) {
+      setResponseData("It was not possible to add the wishlist");
     }
   };
   const handleClickButtonRemoveList = async () => {
@@ -122,12 +155,36 @@ export default function Games() {
         }
       );
       setData(response.status);
+      setResponseData("Game removed from the list");
       // Verificando o status da requisição de login (response)
       if (response.status !== 200) {
-        router.push("/Login");
+        setResponseData("Could not be removed from the list");
       }
     } catch (error) {
-      console.error("Erro nas requisições:", error);
+      setResponseData("Could not be removed from the list");
+    }
+  };
+  const handleClickButtonRemoveWishList = async () => {
+    try {
+      const response = await api.patch(
+        `/myList/removeWishList/${game.id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
+          },
+        }
+      );
+      setData(response.status);
+      setResponseData("Game removed from the wishlist");
+
+      // Verificando o status da requisição de login (response)
+      if (response.status !== 200) {
+        setResponseData("Could not be removed from the wishlist");
+
+      }
+    } catch (error) {
+      setResponseData("Could not be removed from the wishlist");
     }
   };
 
@@ -287,13 +344,43 @@ export default function Games() {
                       title="AddList"
                       variant="primary"
                       onClick={() => handleClickButtonAddList()}
-                    ></Button>
+                    >
+                      <Icon icon="mingcute:add-fill" />
+                    </Button>
                     <Button
-                      title="RemoveList"
+                      title="RemList"
                       variant="danger"
                       onClick={() => handleClickButtonRemoveList()}
-                    ></Button>
+                    >
+                      <Icon icon="mdi:remove-bold" />
+                    </Button>
                   </ButtonsWrapper>
+                  <ButtonsWrapper>
+                    <Button
+                      title="AddWish"
+                      variant="primary"
+                      onClick={() => handleClickButtonAddWishList()}
+                    >
+                      <Icon icon="simple-line-icons:present" />
+                    </Button>
+                    <Button
+                      title="RemWish"
+                      variant="danger"
+                      onClick={() => handleClickButtonRemoveWishList()}
+                    >
+                      <Icon icon="mdi:remove-bold" />
+                    </Button>
+                  </ButtonsWrapper>
+                  <ButtonsWrapper>
+                    <Button
+                      title="Prices"
+                      variant="secondary"
+                      onClick={() => handleClickButtonAddList()}
+                    >
+                      <Icon icon="nimbus:money" />
+                    </Button>
+                  </ButtonsWrapper>
+                  <TextRsponse>{responseData}</TextRsponse>
                 </TextInfo>
               </SubContent>
             </MainContent>

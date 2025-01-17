@@ -87,9 +87,9 @@ export default function MyAccount() {
       {data ? (
         <pre>
           <ContainerIntern>
-            <Title>Minha Conta</Title>
+            <Title>My Account</Title>
             <ExternalWrapper>
-              <Text>Dados da conta</Text>
+              <Text>Account details</Text>
               <Divisor></Divisor>
               <DataAccount>
                 <ImageWrapper>
@@ -98,11 +98,11 @@ export default function MyAccount() {
                 </ImageWrapper>
 
                 <Wrapper>
-                  <Label>Nome: </Label>
+                  <Label>Name: </Label>
                   <Text>{data.name}</Text>
                 </Wrapper>
                 <Wrapper>
-                  <Label htmlFor="user">Usuário: </Label>
+                  <Label htmlFor="user">User: </Label>
                   <Text>{data.user}</Text>
                 </Wrapper>
                 <Wrapper>
@@ -110,15 +110,15 @@ export default function MyAccount() {
                   <Text>{data.email}</Text>
                 </Wrapper>
                 <Wrapper>
-                  <Label>Aniversário: </Label>
+                  <Label>Birthday: </Label>
                   <Text>{format(new Date(data.birthday), "dd/MM/yyyy")}</Text>
                 </Wrapper>
                 <Wrapper>
-                  <Label>Cadastro: </Label>
+                  <Label>SignUp: </Label>
                   <Text>{format(new Date(data.createdAt), "dd/MM/yyyy")}</Text>
                 </Wrapper>
                 <Wrapper>
-                  <Label>Atualização: </Label>
+                  <Label>Atualization: </Label>
                   <Text>{format(new Date(data.updatedAt), "dd/MM/yyyy")}</Text>
                 </Wrapper>
                 <Wrapper>
@@ -134,17 +134,17 @@ export default function MyAccount() {
               <ButtonWrapper>
                 
               <Link href={`/EditAccount`}>
-                <Button title="Editar" variant="primary" type="submit" />
+                <Button title="Edit" variant="primary" type="submit" />
               </Link>
               
-              <Button title="Deletar" variant="danger" type="submit" onClick={handleClick} />
+              <Button title="Delete" variant="danger" type="submit" onClick={handleClick} />
               
               </ButtonWrapper>
             </ExternalWrapper>
           </ContainerIntern>
         </pre>
       ) : (
-        <p>Carregando...</p>
+        <p>Loading...</p>
       )}
     </Container>
   );
