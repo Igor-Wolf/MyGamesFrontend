@@ -25,13 +25,17 @@ export default function MyList() {
   const [data, setData] = useState(200);
   const [gamesList, setGameList] = useState([]);
   const [chosenGame, setChosenGame] = useState("");
-  const auth = localStorage.getItem("token");
+  const [auth, setAuth] = useState("");
+  
+  
 
   const [isPopupOpen, setIsPopupOpen] = useState(false); // Controla a visibilidade do popup
   const [inputValue, setInputValue] = useState(""); // Armazena o valor do input do popup
   const [chosenId, setChosenId] = useState(""); // Armazena o valor do input do popup
 
   useEffect(() => {
+    const auth = localStorage.getItem("token");
+    setAuth(auth)
     if (!auth) {
       router.push("/Login");
       return;
