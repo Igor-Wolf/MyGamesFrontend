@@ -279,7 +279,7 @@ export default function CreateAccount() {
           </FormGroup>
           <Button
             title="Criar"
-            variant="secondary"
+            variant="primary"
             type="submit"
             disabled={!isValid}
           />

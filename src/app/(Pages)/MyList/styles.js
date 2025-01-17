@@ -53,7 +53,8 @@ export const ContainerRow = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width:100%;
+    width:100vw;
+    border: 1px solid gray;
 
     &:hover {
         opacity: 0.6;
@@ -68,27 +69,29 @@ export const ContainerRowIntern = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width:83%;
-
-`
-
-export const ImportantContent = styled.div`
-     display: flex;
-    width: 16.6%; /* Cada item ocupa 20% da largura da div maior */
-    flex-wrap: wrap;
-    white-space: normal; 
-    word-wrap: break-word;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
+    width: 66.66%;
     @media (max-width: 900px) {
 
-width: 50%;
+width: 100%;
 
 
 
 }
 
+`
+
+export const ImportantContent = styled.div`
+     display: flex;
+    flex:1;
+    flex-direction: row;
+    white-space: normal; 
+    word-wrap: break-word;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+
+   
+    
 `
 
 export const ButtonsContainer = styled.div`
@@ -97,5 +100,21 @@ export const ButtonsContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 50%; 
 `
 
+export const ContentText = styled.div`
+
+    display: flex;
+    width: 50%; 
+    flex-wrap: wrap;
+    white-space: normal; 
+    word-wrap: break-word;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    color: white;
+
+
+
+`

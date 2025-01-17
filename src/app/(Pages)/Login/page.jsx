@@ -157,7 +157,7 @@ render={({ field }) => (
               <TextLink>Esqueceu a senha?</TextLink>
           </Link>
           </Wrapper2>
-          <Button title="Login" variant="secondary" type="submit" disabled={!isValid} />
+          <Button title="Login" variant="primary" type="submit" disabled={!isValid} />
           <Link href={`/CreateAccount`}>
               <TextLink>Criar nova conta</TextLink>
           </Link>

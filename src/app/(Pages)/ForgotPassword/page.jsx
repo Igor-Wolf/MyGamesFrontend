@@ -114,7 +114,7 @@ render={({ field }) => (
             {errors.email && <ErrorBox>{errors.email.message}</ErrorBox>}
           </FormGroup>
           
-          <Button title="Recuperar" variant="secondary" type="submit" disabled={!isValid} />
+          <Button title="Recuperar" variant="primary" type="submit" disabled={!isValid} />
           <Link href={`/Login`}>
               <TextLink>Login</TextLink>
           </Link>

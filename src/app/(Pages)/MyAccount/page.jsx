@@ -134,10 +134,10 @@ export default function MyAccount() {
               <ButtonWrapper>
                 
               <Link href={`/EditAccount`}>
-                <Button title="Editar" variant="secondary" type="submit" />
+                <Button title="Editar" variant="primary" type="submit" />
               </Link>
               
-              <Button title="Deletar" variant="primary" type="submit" onClick={handleClick} />
+              <Button title="Deletar" variant="danger" type="submit" onClick={handleClick} />
               
               </ButtonWrapper>
             </ExternalWrapper>

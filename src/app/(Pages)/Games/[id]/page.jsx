@@ -8,6 +8,7 @@ import {
   AccordionHeader,
   AccordionItem,
   AccordionWrapper,
+  ButtonsWrapper,
   Conainer,
   Content,
   ImageGame,
@@ -40,10 +41,8 @@ export default function Games() {
   const [screenshots, setScreenshots] = useState(null);
 
   const auth = localStorage.getItem("token");
- 
 
   useEffect(() => {
-
     if (!auth || !itemId) {
       router.push("/Login");
       return;
@@ -76,11 +75,8 @@ export default function Games() {
         // Verificando o status da requisição de login (response)
         if (response.status !== 200) {
           router.push("/Login");
-        }
-        else if (game.status !== 200) {
-          
+        } else if (game.status !== 200) {
           router.push("/");
-
         }
       } catch (error) {
         console.error("Erro nas requisições:", error);
@@ -90,8 +86,7 @@ export default function Games() {
     req();
   }, []); // Dependências vazias, para que seja executado apenas uma vez ao carregar o componente
 
-  const handleClickButtonAddList = async () => { 
-
+  const handleClickButtonAddList = async () => {
     const add = {
       id: game.id,
       background_image: game.background_image,
@@ -99,46 +94,42 @@ export default function Games() {
       released: game.released,
       genres: game.genres,
       description: "",
+    };
+    try {
+      const response = await api.patch("/myList/addGameList", add, {
+        headers: {
+          Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
+        },
+      });
+      setData(response.status);
+      // Verificando o status da requisição de login (response)
+      if (response.status !== 200) {
+        router.push("/Login");
+      }
+    } catch (error) {
+      console.error("Erro nas requisições:", error);
     }
+  };
+  const handleClickButtonRemoveList = async () => {
     try {
-            const response = await api.patch("/myList/addGameList", add ,{
-              headers: {
-                Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
-              },
-            });
-            setData(response.status);
-            // Verificando o status da requisição de login (response)
-            if (response.status !== 200) {
-              router.push("/Login");
-            }
-          } catch (error) {
-            console.error("Erro nas requisições:", error);
-          }
-
-
-
-  }
-  const handleClickButtonRemoveList = async () => { 
-
-    
-    try {
-      const response = await api.patch(`/myList/removeGameList/${game.id}`, {},{
-              headers: {
-                Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
-              },
-            });
-            setData(response.status);
-            // Verificando o status da requisição de login (response)
-            if (response.status !== 200) {
-              router.push("/Login");
-            }
-          } catch (error) {
-            console.error("Erro nas requisições:", error);
-          }
-
-
-
-  }
+      const response = await api.patch(
+        `/myList/removeGameList/${game.id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
+          },
+        }
+      );
+      setData(response.status);
+      // Verificando o status da requisição de login (response)
+      if (response.status !== 200) {
+        router.push("/Login");
+      }
+    } catch (error) {
+      console.error("Erro nas requisições:", error);
+    }
+  };
 
   const [openItem, setOpenItem] = useState(null);
 
@@ -152,7 +143,9 @@ export default function Games() {
         <pre>
           <Banner></Banner>
           <Content>
-            <TitleText><strong>{game.name} </strong> </TitleText>
+            <TitleText>
+              <strong>{game.name} </strong>{" "}
+            </TitleText>
             <MainContent>
               <SubContent>
                 <ImageGame src={game.background_image}></ImageGame>
@@ -231,8 +224,7 @@ export default function Games() {
               <SubContent>
                 <TextInfo>
                   <strong>Description: </strong>
-                  <ReadMore text={game.description_raw}>
-                  </ReadMore>
+                  <ReadMore text={game.description_raw}></ReadMore>
                 </TextInfo>
                 <TextInfo>
                   <strong>Genres: </strong>{" "}
@@ -290,10 +282,19 @@ export default function Games() {
                       </AccordionItem>
                     ))}
                   </AccordionWrapper>
-                  <Button title="AddList" variant="secondary" onClick={() => handleClickButtonAddList( )}></Button>
-                  <Button title="RemoveList" variant="secondary" onClick={() => handleClickButtonRemoveList( )}></Button>
+                  <ButtonsWrapper>
+                    <Button
+                      title="AddList"
+                      variant="primary"
+                      onClick={() => handleClickButtonAddList()}
+                    ></Button>
+                    <Button
+                      title="RemoveList"
+                      variant="danger"
+                      onClick={() => handleClickButtonRemoveList()}
+                    ></Button>
+                  </ButtonsWrapper>
                 </TextInfo>
-               
               </SubContent>
             </MainContent>
 
@@ -335,10 +336,10 @@ export default function Games() {
             )}
           </Content>
         </pre>
-      ) : ( <pre>
-          
-        <Loading></Loading>
-      </pre>
+      ) : (
+        <pre>
+          <Loading></Loading>
+        </pre>
       )}
     </Conainer>
   );

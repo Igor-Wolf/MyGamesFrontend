@@ -8,6 +8,8 @@ import {
   Conainer,
   ContainerRow,
   ContainerRowIntern,
+  ContentText,
+  ImportantContent,
   MainContent,
   TitleContainer,
   TitleText,
@@ -26,8 +28,6 @@ export default function MyList() {
   const [gamesList, setGameList] = useState([]);
   const [chosenGame, setChosenGame] = useState("");
   const [auth, setAuth] = useState("");
-  
-  
 
   const [isPopupOpen, setIsPopupOpen] = useState(false); // Controla a visibilidade do popup
   const [inputValue, setInputValue] = useState(""); // Armazena o valor do input do popup
@@ -35,7 +35,7 @@ export default function MyList() {
 
   useEffect(() => {
     const auth = localStorage.getItem("token");
-    setAuth(auth)
+    setAuth(auth);
     if (!auth) {
       router.push("/Login");
       return;
@@ -199,19 +199,25 @@ export default function MyList() {
                     description={game.description || ""}
                   ></CardList>
                 </ContainerRowIntern>
-                <ButtonsContainer>
-                  <Button
-                    title="Remove"
-                    variant="secondary"
-                    onClick={() => handleClickButtonRemove(game.id)}
-                  ></Button>
-                  <div>
+                <ImportantContent>
+                  <ContentText>
+                    <strong>Desc: </strong>
+                    {game.description}
+                  </ContentText>
+                  <ButtonsContainer>
                     <Button
                       title="Edit Desc."
+                      variant="primary"
                       onClick={() => openPopup(game.id, game.description)}
                     ></Button>
-                  </div>
-                </ButtonsContainer>
+                    <Button title="Prices" variant="secondary"></Button>
+                    <Button
+                      title="Remove"
+                      variant="danger"
+                      onClick={() => handleClickButtonRemove(game.id)}
+                    ></Button>
+                  </ButtonsContainer>
+                </ImportantContent>
               </ContainerRow>
             ))}
             {isPopupOpen && (

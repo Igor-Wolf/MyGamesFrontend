@@ -188,6 +188,16 @@ export const ItemAccordion = styled.div`
 
 `
 
+export const ButtonsWrapper = styled.div`
+
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+`
+
 
 
 

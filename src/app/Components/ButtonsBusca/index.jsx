@@ -30,7 +30,7 @@ const ButtonsBusca = ({ onButtonClick }) => {
         />
           <Button
         title="Search "
-        variant="secondary"
+        variant="primary"
         onClick={() => handleClickButton(inputValue)}
         >
         <Icon icon="ic:sharp-search" />

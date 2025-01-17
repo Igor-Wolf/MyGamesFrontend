@@ -29,10 +29,10 @@ const CardList = ({ urlImg, name, release, genres, description }) => {
           );
         })}
       </ContentText>
-      <ContentText>
+      {/* <ContentText>
         <strong>Description: </strong>
         {description}
-      </ContentText>
+      </ContentText> */}
       
       
     </Wrapper>
