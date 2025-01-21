@@ -53,6 +53,11 @@ const Header = () => {
           </Link>
         </li>
         <li>
+          <Link href={"/SearchPrices"}>
+            <Row>Prices</Row>
+          </Link>
+        </li>
+        <li>
           <Link href={"/"}>
             <Row>About</Row>
           </Link>

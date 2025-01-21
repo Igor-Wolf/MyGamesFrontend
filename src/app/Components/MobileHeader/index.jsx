@@ -42,6 +42,24 @@ const  MobileHeader = () => {
               
           </MenuItem> 
           </Link>
+          <Link href={'/SearchPrices'}>
+          <MenuItem>
+              
+              <Icon>
+                  
+                      
+              <i class="bi bi-currency-dollar"></i>
+
+              </Icon>
+              
+             
+              <TextMenu>Prices</TextMenu>
+              
+              
+              
+              
+          </MenuItem> 
+          </Link>
 
           <Link href={'/'}>
           <MenuItem>
@@ -61,23 +79,7 @@ const  MobileHeader = () => {
           </MenuItem> 
           </Link>
 
-          <Link href={'/'}>
-          <MenuItem>
-              
-              <Icon>
-                  
-              <i className="bi bi-chat-left-dots"></i>
-
-              </Icon>
-              
-             
-              <TextMenu>CONTACT</TextMenu>
-              
-              
-              
-              
-          </MenuItem> 
-          </Link>
+          
                    
           
     </Container>
