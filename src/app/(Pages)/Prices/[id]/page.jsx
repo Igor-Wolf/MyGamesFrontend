@@ -109,6 +109,7 @@ export default function Prices() {
         } else if (game.status !== 200) {
           router.push("/");
         }
+        
       } catch (error) {
         console.error("Erro nas requisições:", error);
       }
@@ -177,7 +178,7 @@ export default function Prices() {
                   <InternalBoxTitle>
                     <Subtext>All time Low</Subtext>
 
-                    {pGeneral[0].historyLow.all
+                    {pGeneral.length >0 && pGeneral[0].historyLow.all
                       ? conversor(
                           lang,
                           pGeneral[0].historyLow.all.currency,
@@ -187,7 +188,7 @@ export default function Prices() {
                   </InternalBoxTitle>
                   <InternalBoxTitle>
                     <Subtext>1y</Subtext>
-                    {pGeneral[0].historyLow.y1
+                    {pGeneral.length >0  && pGeneral[0].historyLow.y1
                       ? conversor(
                           lang,
                           pGeneral[0].historyLow.y1.currency,
@@ -197,7 +198,7 @@ export default function Prices() {
                   </InternalBoxTitle>
                   <InternalBoxTitle>
                     <Subtext>3m</Subtext>
-                    {pGeneral[0].historyLow.m3
+                    {pGeneral.length >0  && pGeneral[0].historyLow.m3
                       ? conversor(
                           lang,
                           pGeneral[0].historyLow.m3.currency,
@@ -208,13 +209,13 @@ export default function Prices() {
                   <InternalBoxTitle>
                     <Subtext>Now</Subtext>
                     <SubtextFullYellow>
-                      {conversor(
+                      {pOverview.length >0  ? conversor(
                         lang,
                         pOverview.prices[0].current.price.currency,
                         pOverview.prices[0].current.price.amount
-                      )}
+                      ) : " "}
                     </SubtextFullYellow>
-                    <Subtext>{pOverview.prices[0].current.shop.name}</Subtext>
+                    <Subtext>{pOverview.length >0  ? pOverview.prices[0].current.shop.name : " "}</Subtext>
                   </InternalBoxTitle>
                 </ExternalBox>
               </SubContent>
@@ -224,7 +225,7 @@ export default function Prices() {
                   <strong>Deals</strong>
                 </Highlight>
                 <InternalBox1>
-                  {pGeneral[0].deals ? pGeneral[0].deals.map((item, index) => {
+                  {pGeneral.length >0  && pGeneral[0].deals ? pGeneral[0].deals.map((item, index) => {
                     return (
                       <ExternalBoxDeals
                         key={index}
