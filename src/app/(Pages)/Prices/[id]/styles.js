@@ -247,6 +247,14 @@ export const ExternalBoxDeals = styled.div`
     justify-content: center;
     color: white;
     width: 100%;
+
+    &:hover {
+        opacity: 0.6;
+        cursor: pointer;
+        background-color:rgb(37, 94, 120);
+        
+    }
+
     
 
     

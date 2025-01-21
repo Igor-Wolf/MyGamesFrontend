@@ -48,7 +48,7 @@ const  MobileHeader = () => {
               <Icon>
                   
                       
-              <i class="bi bi-currency-dollar"></i>
+              <i className="bi bi-currency-dollar"></i>
 
               </Icon>
               

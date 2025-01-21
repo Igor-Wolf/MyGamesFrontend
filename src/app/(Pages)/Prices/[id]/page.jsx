@@ -10,6 +10,7 @@ import {
   differenceInHours,
   differenceInMinutes,
   differenceInSeconds,
+  parseISO
 } from "date-fns";
 
 import {
@@ -252,17 +253,17 @@ export default function Prices() {
                                 <Subtext>
                                   {differenceInDays(
                                     new Date(item.expiry),
-                                    new Date(item.timestamp)
+                                    new Date(format(new Date(), "yyyy-MM-dd'T'HH:mm:ssXXX"))
                                   )}
                                   d
                                   {differenceInHours(
                                     new Date(item.expiry),
-                                    new Date(item.timestamp)
+                                    new Date(format(new Date(), "yyyy-MM-dd'T'HH:mm:ssXXX"))
                                   ) % 24}
                                   h
                                   {differenceInMinutes(
                                     new Date(item.expiry),
-                                    new Date(item.timestamp)
+                                    new Date(format(new Date(), "yyyy-MM-dd'T'HH:mm:ssXXX"))
                                   ) % 60}
                                   m
                                 </Subtext>
