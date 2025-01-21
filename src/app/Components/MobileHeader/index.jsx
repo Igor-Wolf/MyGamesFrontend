@@ -61,7 +61,7 @@ const  MobileHeader = () => {
           </MenuItem> 
           </Link>
 
-          <Link href={'/'}>
+          <Link href={'/About'}>
           <MenuItem>
               
               <Icon>
