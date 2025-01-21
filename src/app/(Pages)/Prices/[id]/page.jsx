@@ -57,9 +57,9 @@ import { Button } from "@/app/Components/Button";
 import { conversor } from "@/app/utils/conversor";
 import Link from "next/link";
 
-export default  function Prices() {
-  const lang =  navigator.language || navigator.userLanguage;
-  
+export default function Prices() {
+  const lang = navigator.language || navigator.userLanguage;
+
   const params = useParams();
   const itemId = params?.id ? params.id : null;
   const router = useRouter();
@@ -68,35 +68,34 @@ export default  function Prices() {
   const [game, setGame] = useState(null);
   const [pGeneral, setPGeneral] = useState(null);
   const [pOverview, setPOverview] = useState(null);
-  const [historyLog, setHistoryLog] = useState(null); 
-
+  const [historyLog, setHistoryLog] = useState(null);
 
   const [responseData, setResponseData] = useState(null);
 
   const auth = localStorage.getItem("token");
 
   useEffect(() => {
-    
     if (!auth || !itemId) {
       router.push("/Login");
       return;
     }
     const req = async () => {
-      const region = await lang.split('-').pop();
-      
+      const region = await lang.split("-").pop();
+
       try {
-        const [response, game, pGeneral, pOverview, historyLog] = await Promise.all([
-          api.get("/login/protected", {
-            headers: {
-              Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
-            },
-          }),
-          api.get(`/prices/game/${itemId}`), // Dados do jogo
-          api.post(`/prices/general/${region}`, [ itemId ]), // Dados do preço do jogo (Ajustado para enviar um objeto)
-          api.post(`/prices/overview/${region}`, [ itemId ]), // Outros jogos da mesma série (Ajustado para enviar um objeto)
-          api.get(`/prices/historyLog/${itemId}&country=${region}`), // Histórico de preços do jogo
-        ]);
-      
+        const [response, game, pGeneral, pOverview, historyLog] =
+          await Promise.all([
+            api.get("/login/protected", {
+              headers: {
+                Authorization: `Bearer ${auth}`, // Certificando-se que o token é enviado corretamente
+              },
+            }),
+            api.get(`/prices/game/${itemId}`), // Dados do jogo
+            api.post(`/prices/general/${region}`, [itemId]), // Dados do preço do jogo (Ajustado para enviar um objeto)
+            api.post(`/prices/overview/${region}`, [itemId]), // Outros jogos da mesma série (Ajustado para enviar um objeto)
+            api.get(`/prices/historyLog/${itemId}&country=${region}`), // Histórico de preços do jogo
+          ]);
+
         // Aqui, você pode definir o estado com as respostas recebidas
         setData(response.data); // Armazene a resposta completa, não apenas o status
         setGame(game.data);
@@ -145,7 +144,7 @@ export default  function Prices() {
                     {game.developers.map((item, index) => {
                       const isLast = index === game.developers.length - 1;
                       return (
-                        <span key={item.index}>
+                        <span key={index}>
                           {item.name}
                           {!isLast && ", "}
                         </span>
@@ -156,15 +155,19 @@ export default  function Prices() {
                 <TextInfo>
                   <strong>Publisher: </strong>{" "}
                   <TextInfoInternal>
-                    {game.publishers.map((item, index) => {
-                      const isLast = index === game.publishers.length - 1;
-                      return (
-                        <span key={item.index}>
-                          {item.name}
-                          {!isLast && ", "}
-                        </span>
-                      );
-                    })}
+                    {game.publishers
+                      ? game.publishers.map((item, index) => {
+                          const isLast = index === game.publishers.length - 1;
+                          return (
+                            <span key={index}>
+                              {" "}
+                              {/* Usando o índice como chave */}
+                              {item.name}
+                              {!isLast && ", "}
+                            </span>
+                          );
+                        })
+                      : ""}
                   </TextInfoInternal>
                 </TextInfo>
                 <Highlight>
@@ -173,27 +176,34 @@ export default  function Prices() {
                 <ExternalBox>
                   <InternalBoxTitle>
                     <Subtext>All time Low</Subtext>
-                    {conversor(
-                      lang,
-                      pGeneral[0].historyLow.all.currency,
-                      pGeneral[0].historyLow.all.amount
-                    )}
+
+                    {pGeneral[0].historyLow.all
+                      ? conversor(
+                          lang,
+                          pGeneral[0].historyLow.all.currency,
+                          pGeneral[0].historyLow.all.amount
+                        )
+                      : ""}
                   </InternalBoxTitle>
                   <InternalBoxTitle>
                     <Subtext>1y</Subtext>
-                    {conversor(
-                      lang,
-                      pGeneral[0].historyLow.y1.currency,
-                      pGeneral[0].historyLow.y1.amount
-                    )}
+                    {pGeneral[0].historyLow.y1
+                      ? conversor(
+                          lang,
+                          pGeneral[0].historyLow.y1.currency,
+                          pGeneral[0].historyLow.y1.amount
+                        )
+                      : ""}
                   </InternalBoxTitle>
                   <InternalBoxTitle>
                     <Subtext>3m</Subtext>
-                    {conversor(
-                      lang,
-                      pGeneral[0].historyLow.m3.currency,
-                      pGeneral[0].historyLow.m3.amount
-                    )}
+                    {pGeneral[0].historyLow.m3
+                      ? conversor(
+                          lang,
+                          pGeneral[0].historyLow.m3.currency,
+                          pGeneral[0].historyLow.m3.amount
+                        )
+                      : ""}
                   </InternalBoxTitle>
                   <InternalBoxTitle>
                     <Subtext>Now</Subtext>
@@ -214,7 +224,7 @@ export default  function Prices() {
                   <strong>Deals</strong>
                 </Highlight>
                 <InternalBox1>
-                  {pGeneral[0].deals.map((item , index) => {
+                  {pGeneral[0].deals ? pGeneral[0].deals.map((item, index) => {
                     return (
                       <ExternalBoxDeals
                         key={index}
@@ -254,36 +264,44 @@ export default  function Prices() {
                         <InternalBoxDeals>
                           <Subtext>StoreLow</Subtext>
                           <span>
-                            {conversor(
-                              lang,
-                              item.storeLow.currency,
-                              item.storeLow.amount
-                            )}
+                            {item.storeLow
+                              ? conversor(
+                                  lang,
+                                  item.storeLow.currency,
+                                  item.storeLow.amount
+                                )
+                              : ""}
                           </span>
                           <Subtext>
                             Better by{" "}
-                            {conversor(
-                              lang,
-                              item.storeLow.currency,
-                              item.price.amount - item.storeLow.amount
-                            )}
+                            {item.storeLow
+                              ? conversor(
+                                  lang,
+                                  item.storeLow.currency,
+                                  item.price.amount - item.storeLow.amount
+                                )
+                              : ""}
                           </Subtext>
                         </InternalBoxDeals>
                         <InternalBoxDeals>
                           <Subtext>Now</Subtext>
                           <span>
-                            {conversor(
-                              lang,
-                              item.price.currency,
-                              item.price.amount
-                            )}
+                            {item.price.currency
+                              ? conversor(
+                                  lang,
+                                  item.price.currency,
+                                  item.price.amount
+                                )
+                              : " "}
                           </span>
                           <Subtext>
-                            {conversor(
-                              lang,
-                              item.regular.currency,
-                              item.regular.amount
-                            )}
+                            {item.regular.currency
+                              ? conversor(
+                                  lang,
+                                  item.regular.currency,
+                                  item.regular.amount
+                                )
+                              : ""}
                           </Subtext>
                         </InternalBoxDeals>
                         <InternalBoxDealsMob>
@@ -304,11 +322,11 @@ export default  function Prices() {
                               <HorizontalBoxInternal>
                                 <Subtext>StoreLow: </Subtext>
                                 <SubtextFull>
-                                  {conversor(
+                                  {item.storeLow ? conversor(
                                     lang,
                                     item.storeLow.currency,
                                     item.storeLow.amount
-                                  )}
+                                  ) : " "}
                                 </SubtextFull>
                               </HorizontalBoxInternal>
 
@@ -333,7 +351,7 @@ export default  function Prices() {
                         </InternalBoxDealsMob>
                       </ExternalBoxDeals>
                     );
-                  })}
+                  }) : ""}
                 </InternalBox1>
               </SubContent>
               <SubContent>

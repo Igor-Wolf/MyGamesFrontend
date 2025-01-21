@@ -164,6 +164,11 @@ export default function Games() {
       setResponseData("Could not be removed from the list");
     }
   };
+  const handleClickButtonPrice = async () => { 
+
+    router.push(`/SearchPrices1/${game.slug}`);
+
+  }
   const handleClickButtonRemoveWishList = async () => {
     try {
       const response = await api.patch(
@@ -375,7 +380,7 @@ export default function Games() {
                     <Button
                       title="Prices"
                       variant="secondary"
-                      onClick={() => handleClickButtonAddList()}
+                      onClick={() => handleClickButtonPrice()}
                     >
                       <Icon icon="nimbus:money" />
                     </Button>
