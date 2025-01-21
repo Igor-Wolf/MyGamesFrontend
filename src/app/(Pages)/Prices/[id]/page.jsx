@@ -109,7 +109,6 @@ export default function Prices() {
         } else if (game.status !== 200) {
           router.push("/");
         }
-        
       } catch (error) {
         console.error("Erro nas requisições:", error);
       }
@@ -178,7 +177,7 @@ export default function Prices() {
                   <InternalBoxTitle>
                     <Subtext>All time Low</Subtext>
 
-                    {pGeneral.length >0 && pGeneral[0].historyLow.all
+                    {pGeneral.length > 0 && pGeneral[0].historyLow.all
                       ? conversor(
                           lang,
                           pGeneral[0].historyLow.all.currency,
@@ -188,7 +187,7 @@ export default function Prices() {
                   </InternalBoxTitle>
                   <InternalBoxTitle>
                     <Subtext>1y</Subtext>
-                    {pGeneral.length >0  && pGeneral[0].historyLow.y1
+                    {pGeneral.length > 0 && pGeneral[0].historyLow.y1
                       ? conversor(
                           lang,
                           pGeneral[0].historyLow.y1.currency,
@@ -198,7 +197,7 @@ export default function Prices() {
                   </InternalBoxTitle>
                   <InternalBoxTitle>
                     <Subtext>3m</Subtext>
-                    {pGeneral.length >0  && pGeneral[0].historyLow.m3
+                    {pGeneral.length > 0 && pGeneral[0].historyLow.m3
                       ? conversor(
                           lang,
                           pGeneral[0].historyLow.m3.currency,
@@ -209,13 +208,19 @@ export default function Prices() {
                   <InternalBoxTitle>
                     <Subtext>Now</Subtext>
                     <SubtextFullYellow>
-                      {pOverview.length >0  ? conversor(
-                        lang,
-                        pOverview.prices[0].current.price.currency,
-                        pOverview.prices[0].current.price.amount
-                      ) : " "}
+                      {pOverview.prices.length > 0
+                        ? conversor(
+                            lang,
+                            pOverview.prices[0].current.price.currency,
+                            pOverview.prices[0].current.price.amount
+                          )
+                        : " "}
                     </SubtextFullYellow>
-                    <Subtext>{pOverview.length >0  ? pOverview.prices[0].current.shop.name : " "}</Subtext>
+                    <Subtext>
+                      {pOverview.prices.length > 0
+                        ? pOverview.prices[0].current.shop.name
+                        : " "}
+                    </Subtext>
                   </InternalBoxTitle>
                 </ExternalBox>
               </SubContent>
@@ -225,89 +230,14 @@ export default function Prices() {
                   <strong>Deals</strong>
                 </Highlight>
                 <InternalBox1>
-                  {pGeneral.length >0  && pGeneral[0].deals ? pGeneral[0].deals.map((item, index) => {
-                    return (
-                      <ExternalBoxDeals
-                        key={index}
-                        onClick={() => handleClick(item.url)}
-                      >
-                        <InternalBoxDeals>
-                          <span>{item.shop.name}</span>
-
-                          {/* Verifica se há DRM e mapeia os nomes */}
-                          {item.drm && item.drm.length > 0 && (
-                            <Subtext>
-                              {item.drm.map((drm) => (
-                                <span key={drm.id}>{drm.name}</span>
-                              ))}
-                            </Subtext>
-                          )}
-                          {item.timestamp && item.expiry && (
-                            <Subtext>
-                              {differenceInDays(
-                                new Date(item.expiry),
-                                new Date(item.timestamp)
-                              )}
-                              d
-                              {differenceInHours(
-                                new Date(item.expiry),
-                                new Date(item.timestamp)
-                              ) % 24}
-                              h
-                              {differenceInMinutes(
-                                new Date(item.expiry),
-                                new Date(item.timestamp)
-                              ) % 60}
-                              m
-                            </Subtext>
-                          )}
-                        </InternalBoxDeals>
-                        <InternalBoxDeals>
-                          <Subtext>StoreLow</Subtext>
-                          <span>
-                            {item.storeLow
-                              ? conversor(
-                                  lang,
-                                  item.storeLow.currency,
-                                  item.storeLow.amount
-                                )
-                              : ""}
-                          </span>
-                          <Subtext>
-                            Better by{" "}
-                            {item.storeLow
-                              ? conversor(
-                                  lang,
-                                  item.storeLow.currency,
-                                  item.price.amount - item.storeLow.amount
-                                )
-                              : ""}
-                          </Subtext>
-                        </InternalBoxDeals>
-                        <InternalBoxDeals>
-                          <Subtext>Now</Subtext>
-                          <span>
-                            {item.price.currency
-                              ? conversor(
-                                  lang,
-                                  item.price.currency,
-                                  item.price.amount
-                                )
-                              : " "}
-                          </span>
-                          <Subtext>
-                            {item.regular.currency
-                              ? conversor(
-                                  lang,
-                                  item.regular.currency,
-                                  item.regular.amount
-                                )
-                              : ""}
-                          </Subtext>
-                        </InternalBoxDeals>
-                        <InternalBoxDealsMob>
-                          <HorizontalBox>
-                            <VerticalBox>
+                  {pGeneral.length > 0 && pGeneral[0].deals
+                    ? pGeneral[0].deals.map((item, index) => {
+                        return (
+                          <ExternalBoxDeals
+                            key={index}
+                            onClick={() => handleClick(item.url)}
+                          >
+                            <InternalBoxDeals>
                               <span>{item.shop.name}</span>
 
                               {/* Verifica se há DRM e mapeia os nomes */}
@@ -318,41 +248,120 @@ export default function Prices() {
                                   ))}
                                 </Subtext>
                               )}
-                            </VerticalBox>
-                            <VerticalBox>
-                              <HorizontalBoxInternal>
-                                <Subtext>StoreLow: </Subtext>
-                                <SubtextFull>
-                                  {item.storeLow ? conversor(
-                                    lang,
-                                    item.storeLow.currency,
-                                    item.storeLow.amount
-                                  ) : " "}
-                                </SubtextFull>
-                              </HorizontalBoxInternal>
-
-                              <HorizontalBoxInternal>
+                              {item.timestamp && item.expiry && (
                                 <Subtext>
-                                  {conversor(
-                                    lang,
-                                    item.regular.currency,
-                                    item.regular.amount
+                                  {differenceInDays(
+                                    new Date(item.expiry),
+                                    new Date(item.timestamp)
                                   )}
+                                  d
+                                  {differenceInHours(
+                                    new Date(item.expiry),
+                                    new Date(item.timestamp)
+                                  ) % 24}
+                                  h
+                                  {differenceInMinutes(
+                                    new Date(item.expiry),
+                                    new Date(item.timestamp)
+                                  ) % 60}
+                                  m
                                 </Subtext>
-                                <span>
-                                  {conversor(
-                                    lang,
-                                    item.price.currency,
-                                    item.price.amount
+                              )}
+                            </InternalBoxDeals>
+                            <InternalBoxDeals>
+                              <Subtext>StoreLow</Subtext>
+                              <span>
+                                {item.storeLow
+                                  ? conversor(
+                                      lang,
+                                      item.storeLow.currency,
+                                      item.storeLow.amount
+                                    )
+                                  : ""}
+                              </span>
+                              <Subtext>
+                                Better by{" "}
+                                {item.storeLow
+                                  ? conversor(
+                                      lang,
+                                      item.storeLow.currency,
+                                      item.price.amount - item.storeLow.amount
+                                    )
+                                  : ""}
+                              </Subtext>
+                            </InternalBoxDeals>
+                            <InternalBoxDeals>
+                              <Subtext>Now</Subtext>
+                              <span>
+                                {item.price.currency
+                                  ? conversor(
+                                      lang,
+                                      item.price.currency,
+                                      item.price.amount
+                                    )
+                                  : " "}
+                              </span>
+                              <Subtext>
+                                {item.regular.currency
+                                  ? conversor(
+                                      lang,
+                                      item.regular.currency,
+                                      item.regular.amount
+                                    )
+                                  : ""}
+                              </Subtext>
+                            </InternalBoxDeals>
+                            <InternalBoxDealsMob>
+                              <HorizontalBox>
+                                <VerticalBox>
+                                  <span>{item.shop.name}</span>
+
+                                  {/* Verifica se há DRM e mapeia os nomes */}
+                                  {item.drm && item.drm.length > 0 && (
+                                    <Subtext>
+                                      {item.drm.map((drm) => (
+                                        <span key={drm.id}>{drm.name}</span>
+                                      ))}
+                                    </Subtext>
                                   )}
-                                </span>
-                              </HorizontalBoxInternal>
-                            </VerticalBox>
-                          </HorizontalBox>
-                        </InternalBoxDealsMob>
-                      </ExternalBoxDeals>
-                    );
-                  }) : ""}
+                                </VerticalBox>
+                                <VerticalBox>
+                                  <HorizontalBoxInternal>
+                                    <Subtext>StoreLow: </Subtext>
+                                    <SubtextFull>
+                                      {item.storeLow
+                                        ? conversor(
+                                            lang,
+                                            item.storeLow.currency,
+                                            item.storeLow.amount
+                                          )
+                                        : " "}
+                                    </SubtextFull>
+                                  </HorizontalBoxInternal>
+
+                                  <HorizontalBoxInternal>
+                                    <Subtext>
+                                      {conversor(
+                                        lang,
+                                        item.regular.currency,
+                                        item.regular.amount
+                                      )}
+                                    </Subtext>
+                                    <span>
+                                      {conversor(
+                                        lang,
+                                        item.price.currency,
+                                        item.price.amount
+                                      )}
+                                    </span>
+                                  </HorizontalBoxInternal>
+                                </VerticalBox>
+                              </HorizontalBox>
+                            </InternalBoxDealsMob>
+                          </ExternalBoxDeals>
+                        );
+                      })
+                    : ""}
                 </InternalBox1>
               </SubContent>
               <SubContent>
