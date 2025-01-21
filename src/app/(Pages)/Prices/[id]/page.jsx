@@ -145,7 +145,7 @@ export default  function Prices() {
                     {game.developers.map((item, index) => {
                       const isLast = index === game.developers.length - 1;
                       return (
-                        <span key={item.id}>
+                        <span key={item.index}>
                           {item.name}
                           {!isLast && ", "}
                         </span>
@@ -159,7 +159,7 @@ export default  function Prices() {
                     {game.publishers.map((item, index) => {
                       const isLast = index === game.publishers.length - 1;
                       return (
-                        <span key={item.id}>
+                        <span key={item.index}>
                           {item.name}
                           {!isLast && ", "}
                         </span>
@@ -214,10 +214,10 @@ export default  function Prices() {
                   <strong>Deals</strong>
                 </Highlight>
                 <InternalBox1>
-                  {pGeneral[0].deals.map((item) => {
+                  {pGeneral[0].deals.map((item , index) => {
                     return (
                       <ExternalBoxDeals
-                        key={item.shop.id}
+                        key={index}
                         onClick={() => handleClick(item.url)}
                       >
                         <InternalBoxDeals>

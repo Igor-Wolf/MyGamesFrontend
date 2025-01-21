@@ -1,26 +1,27 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { api } from "../../Services/api";
+import { api } from "../../../Services/api";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Conainer, MainContent, TitleContainer, TitleText } from "./styles";
-import { Banner } from "../../Components/Banner";
-import { SlideGames, TrendingGames } from "../../Components/SlideGames";
-import { Divisor } from "../../Components/Divisor";
-import { Loading } from "../../Components/Loading";
-import { ButtonsBusca } from "@/app/Components/ButtonsBusca";
-import { Card } from "@/app/Components/Card";
+import { Banner } from "../../../Components/Banner";
+import { Divisor } from "../../../Components/Divisor";
+import { Loading } from "../../../Components/Loading";
 import { CardPrices } from "@/app/Components/CardPrices";
 import { ButtonsBuscaPrices } from "@/app/Components/ButtonsBuscaPrices";
+import { use } from 'react'; // Para usar 'use' no futuro
 
-export default function SearchPrices() {
+
+export default function SearchPrices1({ params }) {
+  const unwrappedParams = use(params);
+  const slug = unwrappedParams?.slug || " " ;
   const router = useRouter();
   const [data, setData] = useState(200);
   const [gamesList, setGameList] = useState([]);
 
   useEffect(() => {
     const auth = localStorage.getItem("token");
-
+    
     if (!auth) {
       router.push("/Login");
       return;
@@ -37,6 +38,9 @@ export default function SearchPrices() {
         // Verificando o status da requisição de login (response)
         if (response.status !== 200) {
           router.push("/Login");
+        }
+        else if (response.status ===200 && slug) {
+          handleClickButton(slug)
         }
       } catch (error) {
         console.error("Erro nas requisições:", error);

@@ -83,6 +83,9 @@ export default function WishList() {
   const handleClickRow = async (id) => {
     router.push(`/Games/${id}`);
   };
+  const handleClickButtonPrice = async (slug) => {
+    router.push(`/SearchPrices1/${slug}`);
+  };
   // Função executada ao clicar no botão remover
   const handleClickButtonRemove = async (id) => {
     try {
@@ -214,7 +217,8 @@ export default function WishList() {
                     >
                       <Icon icon="raphael:edit" />
                     </Button>
-                    <Button title="Prices" variant="secondary">
+                    <Button title="Prices" variant="secondary"
+                    onClick={() => handleClickButtonPrice(encodeURIComponent(game.name))}>
                       <Icon icon="nimbus:money" />
                     </Button>
                     <Button
