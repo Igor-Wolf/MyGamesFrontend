@@ -148,7 +148,7 @@ render={({ field }) => (
             {errors.passwordHash2 && <ErrorBox>{errors.passwordHash2.message}</ErrorBox>}
           </FormGroup>
           
-          <Button title="Confirmar" variant="secondary" type="submit" disabled={!isValid} />
+          <Button title="Confirmar" variant="primary" type="submit" disabled={!isValid} />
           <Link href={`/Login`}>
               <TextLink>Login</TextLink>
           </Link>
