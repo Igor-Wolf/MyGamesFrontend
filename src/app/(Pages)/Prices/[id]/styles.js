@@ -237,6 +237,7 @@ export const ExternalBox = styled.div`
     @media (max-width: 400px) {
 
 width:100vw;
+flex-wrap: wrap;
 }
 `
 export const ExternalBoxDeals = styled.div`
@@ -265,10 +266,29 @@ display: flex;
     gap: 0.5rem;
     
     width:100%;
-    
-    
 
+     @media (max-width: 400px) {
 
+width:100vw;
+}
+`
+export const InternalBoxTitle = styled.div`
+
+display: flex;
+    height:80px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: gray 1px solid;
+    padding: 1rem;
+    gap: 0.5rem;
+    
+    width:100%;
+
+     @media (max-width: 400px) {
+
+width:50vw;
+}
 `
 export const InternalBox1 = styled.div`
 

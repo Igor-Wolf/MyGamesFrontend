@@ -32,6 +32,7 @@ import {
   InternalBoxDeals,
   InternalBoxDealsLog,
   InternalBoxDealsMob,
+  InternalBoxTitle,
   ItemAccordion,
   MainContent,
   ScrollContainer,
@@ -170,31 +171,31 @@ export default  function Prices() {
                   <strong>Prices Overview:</strong>{" "}
                 </Highlight>
                 <ExternalBox>
-                  <InternalBox>
+                  <InternalBoxTitle>
                     <Subtext>All time Low</Subtext>
                     {conversor(
                       lang,
                       pGeneral[0].historyLow.all.currency,
                       pGeneral[0].historyLow.all.amount
                     )}
-                  </InternalBox>
-                  <InternalBox>
+                  </InternalBoxTitle>
+                  <InternalBoxTitle>
                     <Subtext>1y</Subtext>
                     {conversor(
                       lang,
                       pGeneral[0].historyLow.y1.currency,
                       pGeneral[0].historyLow.y1.amount
                     )}
-                  </InternalBox>
-                  <InternalBox>
+                  </InternalBoxTitle>
+                  <InternalBoxTitle>
                     <Subtext>3m</Subtext>
                     {conversor(
                       lang,
                       pGeneral[0].historyLow.m3.currency,
                       pGeneral[0].historyLow.m3.amount
                     )}
-                  </InternalBox>
-                  <InternalBox>
+                  </InternalBoxTitle>
+                  <InternalBoxTitle>
                     <Subtext>Now</Subtext>
                     <SubtextFullYellow>
                       {conversor(
@@ -204,7 +205,7 @@ export default  function Prices() {
                       )}
                     </SubtextFullYellow>
                     <Subtext>{pOverview.prices[0].current.shop.name}</Subtext>
-                  </InternalBox>
+                  </InternalBoxTitle>
                 </ExternalBox>
               </SubContent>
 
