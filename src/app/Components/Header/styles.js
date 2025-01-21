@@ -24,6 +24,12 @@ display:flex;
     flex-direction: column;
 }
 
+@media (min-width:1000px) and (max-width: 1100px) {
+  padding-left: 200px;
+    padding-right: 200px;
+}
+
+
 @media (min-width: 769px) and (max-width: 1000px) {
 
 width:100vw;

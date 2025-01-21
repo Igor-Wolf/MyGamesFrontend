@@ -80,15 +80,15 @@ export default function CreateAccount() {
     
     if (response.status === 200) {
       
-      setResponseData("Cadastro realizado com sucesso")
+      setResponseData("Registration completed successfully")
       reset();
     } else if (response.status === 409) {
-      setResponseData("Usuário ou email já existem, tente novamente")
+      setResponseData("User or email already exists, please try again")
       reset();
 
     }
     else {
-      setResponseData("Erro no servidor")
+      setResponseData("Server Error")
       reset();
 
     }

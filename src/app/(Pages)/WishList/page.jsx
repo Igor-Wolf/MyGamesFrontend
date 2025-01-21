@@ -7,6 +7,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import {
   ButtonsContainer,
+  Comment1,
   Conainer,
   ContainerRow,
   ContainerRowIntern,
@@ -206,7 +207,9 @@ export default function WishList() {
                 </ContainerRowIntern>
                 <ImportantContent>
                   <ContentText>
-                    <strong>Cmnt: </strong>
+                    <Comment1>
+                      <strong>C: </strong>
+                    </Comment1>
                     {game.description}
                   </ContentText>
                   <ButtonsContainer>
@@ -217,8 +220,13 @@ export default function WishList() {
                     >
                       <Icon icon="raphael:edit" />
                     </Button>
-                    <Button title="Prices" variant="secondary"
-                    onClick={() => handleClickButtonPrice(encodeURIComponent(game.name))}>
+                    <Button
+                      title="Prices"
+                      variant="secondary"
+                      onClick={() =>
+                        handleClickButtonPrice(encodeURIComponent(game.name))
+                      }
+                    >
                       <Icon icon="nimbus:money" />
                     </Button>
                     <Button

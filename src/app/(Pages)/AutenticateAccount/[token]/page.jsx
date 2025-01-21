@@ -87,7 +87,7 @@ export default function AutenticateAccount() {
         <Title>Authenticated account</Title>        
         <Form>          
           <Link href={`/Login`}>
-          <Button title="Login" variant="secondary"/>
+          <Button title="Login" variant="primary"/>
 
           </Link>
         </Form>

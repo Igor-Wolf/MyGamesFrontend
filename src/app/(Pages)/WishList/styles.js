@@ -118,3 +118,17 @@ export const ContentText = styled.div`
 
 
 `
+
+export const Comment1 = styled.div`
+
+
+    display: flex;
+
+    @media (max-width: 400px) {
+
+display: none;
+
+
+}
+
+`
