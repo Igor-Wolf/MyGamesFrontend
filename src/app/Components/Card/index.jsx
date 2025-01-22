@@ -1,5 +1,6 @@
 import React from 'react'
 import { ContentText, ImageBanner, ImportantContent, Wrapper } from './styles'
+import MetacriticNote from '../MetacriticNote'
 
 
 
@@ -17,7 +18,7 @@ const Card = ({ urlImg, name, release, metacritic, age }) => {
           </ImportantContent>
           <ImportantContent><strong>{ name }</strong></ImportantContent>
           <ContentText><strong>Released: </strong>{ release }</ContentText>
-          <ContentText><strong>Metacritic: </strong>{ metacritic }</ContentText>
+          <ContentText><strong>Metacritic: </strong><MetacriticNote note={metacritic}></MetacriticNote></ContentText>
           <ContentText><strong>Age: </strong>{ age }</ContentText>
 
     </Wrapper>
