@@ -14,10 +14,9 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet"></link>
     </head>
       <body>
-          <Header></Header>
+          
         {children}
-        <Footer></Footer>
-        <MobileHeader></MobileHeader>
+        
        
     </body>
   </html>

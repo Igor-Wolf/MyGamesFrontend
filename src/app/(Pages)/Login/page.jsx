@@ -12,6 +12,8 @@ import { api } from "@/app/Services/api";
 import { useRouter } from "next/navigation";
 import { Divisor } from "@/app/Components/Divisor";
 import Link from "next/link";
+import { Footer } from "@/app/Components/Footer";
+import { FooterExternal } from "@/app/Components/FooterExternal";
 
 
 
@@ -85,6 +87,7 @@ const req = async (body) => {
   };
   
   return (
+    <>
     <Container>
       <VideoBg autoPlay loop muted playsInline>
           <source src="/assets/quarto.mp4"></source>
@@ -143,12 +146,12 @@ render={({ field }) => (
       defaultValue={false}  // Valor inicial da checkbox (desmarcada)
       render={({ field }) => (
         <input 
-          type="checkbox" 
-          id="ok" 
-          {...field}  // Registra a checkbox no formulário
+        type="checkbox" 
+        id="ok" 
+        {...field}  // Registra a checkbox no formulário
         />
       )}
-    />
+      />
     <Text>Remember me?</Text>
             </RememberPass>
               <Text2>|</Text2>
@@ -170,5 +173,7 @@ render={({ field }) => (
         </Form>
       </ContainerIntern>
     </Container>
+      <FooterExternal></FooterExternal>
+              </>
   );
 }

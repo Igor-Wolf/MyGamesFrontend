@@ -118,6 +118,20 @@ export const ContentText = styled.div`
 
 
 `
+export const Conainer1 = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    width:100vw;
+    background-color: black;
+    flex: 1;
+
+
+    
+
+
+
+`
 
 export const Comment1 = styled.div`
 

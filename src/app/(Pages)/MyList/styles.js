@@ -15,6 +15,20 @@ export const Conainer = styled.div`
     padding-top: 60px;
 
 `
+export const Conainer1 = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    width:100vw;
+    background-color: black;
+    flex: 1;
+
+
+    
+
+
+
+`
 
 
 export const TitleContainer = styled.div`

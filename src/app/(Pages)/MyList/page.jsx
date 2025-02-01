@@ -9,6 +9,7 @@ import {
   ButtonsContainer,
   Comment1,
   Conainer,
+  Conainer1,
   ContainerRow,
   ContainerRowIntern,
   ContentText,
@@ -24,10 +25,13 @@ import { ButtonsBusca } from "@/app/Components/ButtonsBusca";
 import { CardList } from "@/app/Components/CardList";
 import { Button } from "@/app/Components/Button";
 import { PopupDescription } from "@/app/Components/PopupDescription";
+import { Header } from "@/app/Components/Header";
+import { MobileHeader } from "@/app/Components/MobileHeader";
+import { Footer } from "@/app/Components/Footer";
 
 export default function MyList() {
   const router = useRouter();
-  const [data, setData] = useState(200);
+  const [data, setData] = useState();
   const [gamesList, setGameList] = useState([]);
   const [chosenGame, setChosenGame] = useState("");
   const [auth, setAuth] = useState("");
@@ -183,73 +187,83 @@ export default function MyList() {
   );
   return (
     <Conainer>
-      {data === 200 ? (
-        <pre>
-          <Banner></Banner>
-          <MainContent>
-            <TitleContainer>
-              <TitleText>MyList</TitleText>
-              <Divisor></Divisor>
-            </TitleContainer>
+      <Header></Header>
+      <Conainer1>
+        {data === 200 ? (
+          <pre>
+            <Banner></Banner>
+            <MainContent>
+              <TitleContainer>
+                <TitleText>MyList</TitleText>
+                <Divisor></Divisor>
+              </TitleContainer>
 
-            <ButtonsBusca onButtonClick={handleClickButton} />
-            {resultados.map((game) => (
-              <ContainerRow key={game.id}>
-                <ContainerRowIntern onClick={() => handleClickRow(game.id)}>
-                  <CardList
-                    key={game.id}
-                    urlImg={game.background_image || "Sem título"}
-                    name={game.name || ""}
-                    release={game.released || ""}
-                    genres={game.genres || ""}
-                    description={game.description || ""}
-                  ></CardList>
-                </ContainerRowIntern>
-                <ImportantContent>
-                  <ContentText>
-                    <Comment1>
-                    <strong>C: </strong>
-                    </Comment1>
-                    {game.description}
-                  </ContentText>
-                  <ButtonsContainer>
-                    <Button
-                      title="Edit"
-                      variant="primary"
-                      onClick={() => openPopup(game.id, game.description)}
-                    >
-                      <Icon icon="raphael:edit" />
-                    </Button>
-                    <Button title="Prices" variant="secondary"
-                    onClick={() => handleClickButtonPrice(encodeURIComponent(game.name))}>
-                      <Icon icon="nimbus:money" />
-                    </Button>
-                    <Button
-                      title="Remove"
-                      variant="danger"
-                      onClick={() => handleClickButtonRemove(game.id)}
-                    >
-                      <Icon icon="mdi:remove-bold" />
-                    </Button>
-                  </ButtonsContainer>
-                </ImportantContent>
-              </ContainerRow>
-            ))}
-            {isPopupOpen && (
-              <PopupDescription
-                onSave={handleSave}
-                onClose={closePopup}
-                chosenId={chosenId}
-                description={inputValue}
-              />
-            )}
-          </MainContent>
-        </pre>
-      ) : (
-        <pre>
-          <Loading></Loading>
-        </pre>
-      )}
+              <ButtonsBusca onButtonClick={handleClickButton} />
+              {resultados.map((game) => (
+                <ContainerRow key={game.id}>
+                  <ContainerRowIntern onClick={() => handleClickRow(game.id)}>
+                    <CardList
+                      key={game.id}
+                      urlImg={game.background_image || "Sem título"}
+                      name={game.name || ""}
+                      release={game.released || ""}
+                      genres={game.genres || ""}
+                      description={game.description || ""}
+                    ></CardList>
+                  </ContainerRowIntern>
+                  <ImportantContent>
+                    <ContentText>
+                      <Comment1>
+                        <strong>C: </strong>
+                      </Comment1>
+                      {game.description}
+                    </ContentText>
+                    <ButtonsContainer>
+                      <Button
+                        title="Edit"
+                        variant="primary"
+                        onClick={() => openPopup(game.id, game.description)}
+                      >
+                        <Icon icon="raphael:edit" />
+                      </Button>
+                      <Button
+                        title="Prices"
+                        variant="secondary"
+                        onClick={() =>
+                          handleClickButtonPrice(encodeURIComponent(game.name))
+                        }
+                      >
+                        <Icon icon="nimbus:money" />
+                      </Button>
+                      <Button
+                        title="Remove"
+                        variant="danger"
+                        onClick={() => handleClickButtonRemove(game.id)}
+                      >
+                        <Icon icon="mdi:remove-bold" />
+                      </Button>
+                    </ButtonsContainer>
+                  </ImportantContent>
+                </ContainerRow>
+              ))}
+              {isPopupOpen && (
+                <PopupDescription
+                  onSave={handleSave}
+                  onClose={closePopup}
+                  chosenId={chosenId}
+                  description={inputValue}
+                />
+              )}
+            </MainContent>
+          </pre>
+        ) : (
+          <pre>
+            <Loading></Loading>
+          </pre>
+        )}
+      </Conainer1>
+      <MobileHeader></MobileHeader>
+      <Footer></Footer>
     </Conainer>
   );
 }

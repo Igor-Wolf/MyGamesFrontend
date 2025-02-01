@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import {
   ButtonWrapper,
+  Conainer1,
   Container,
   ContainerIntern,
   DataAccount,
@@ -25,6 +26,9 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/app/Components/Button";
 import Link from "next/link";
 import { format } from "date-fns";
+import { Header } from "@/app/Components/Header";
+import { MobileHeader } from "@/app/Components/MobileHeader";
+import { Footer } from "@/app/Components/Footer";
 
 export default function MyAccount() {
   const [data, setData] = useState(null);
@@ -80,10 +84,12 @@ export default function MyAccount() {
   }
   return (
     <Container>
+      <Header></Header>
       <VideoBg autoPlay loop muted playsInline>
         <source src="/assets/hogwarts.mp4"></source>
       </VideoBg>
       <VideoBgColor></VideoBgColor>
+      <Conainer1>
       {data ? (
         <pre>
           <ContainerIntern>
@@ -146,6 +152,10 @@ export default function MyAccount() {
       ) : (
         <p>Loading...</p>
       )}
+
+      </Conainer1>
+      <MobileHeader></MobileHeader>
+      <Footer></Footer>
     </Container>
   );
 }

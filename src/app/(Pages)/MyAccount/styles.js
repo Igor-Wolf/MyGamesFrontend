@@ -18,9 +18,22 @@ display: flex;
 
 height:auto;
 overflow: visible;
-padding-top: 80px;
-padding-bottom: 30px;
+
+
 }
+
+`
+export const Conainer1 = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    width:100vw;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding-top: 80px;
+    padding-bottom: 1rem;
+
 
 `
 

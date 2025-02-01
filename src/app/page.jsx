@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import { api } from "./Services/api";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Conainer, TitleContainer, TitleText } from "./styles";
+import { Conainer, Conainer1, TitleContainer, TitleText } from "./styles";
 import { Banner } from "./Components/Banner";
 import { SlideGames, TrendingGames } from "./Components/SlideGames";
 import { Divisor } from "./Components/Divisor";
 import { Loading } from "./Components/Loading";
+import { Header } from "./Components/Header";
+import { MobileHeader } from "./Components/MobileHeader";
+import { Footer } from "./Components/Footer";
 
 export default function Home() {
   const router = useRouter();
@@ -62,38 +65,43 @@ export default function Home() {
 
   return (
     <Conainer>
-      {data === 200 && trending ? (
-        <pre>
-          <Banner></Banner>
+      <Header></Header>
+      <Conainer1>
+        {data === 200 && trending ? (
+          <pre>
+            <Banner></Banner>
 
-          <TitleContainer>
-            <TitleText>Trending Games</TitleText>
-            <Divisor></Divisor>
-          </TitleContainer>
-          <SlideGames gameList={trending}></SlideGames>
+            <TitleContainer>
+              <TitleText>Trending Games</TitleText>
+              <Divisor></Divisor>
+            </TitleContainer>
+            <SlideGames gameList={trending}></SlideGames>
 
-          <TitleContainer>
-            <TitleText>Next Releases</TitleText>
-            <Divisor></Divisor>
-          </TitleContainer>
-          <SlideGames gameList={nextReleases}></SlideGames>
+            <TitleContainer>
+              <TitleText>Next Releases</TitleText>
+              <Divisor></Divisor>
+            </TitleContainer>
+            <SlideGames gameList={nextReleases}></SlideGames>
 
-          <TitleContainer>
-            <TitleText>Popular Games</TitleText>
-            <Divisor></Divisor>
-          </TitleContainer>
-          <SlideGames gameList={popularGames}></SlideGames>
-          <TitleContainer>
-            <TitleText>Top Metacritc</TitleText>
-            <Divisor></Divisor>
-          </TitleContainer>
-          <SlideGames gameList={metacritic}></SlideGames>
-        </pre>
-      ) : (
-        <pre>
-          <Loading></Loading>
-        </pre>
-      )}
+            <TitleContainer>
+              <TitleText>Popular Games</TitleText>
+              <Divisor></Divisor>
+            </TitleContainer>
+            <SlideGames gameList={popularGames}></SlideGames>
+            <TitleContainer>
+              <TitleText>Top Metacritc</TitleText>
+              <Divisor></Divisor>
+            </TitleContainer>
+            <SlideGames gameList={metacritic}></SlideGames>
+          </pre>
+        ) : (
+          <pre>
+            <Loading></Loading>
+          </pre>
+        )}
+      </Conainer1>
+      <MobileHeader></MobileHeader>
+      <Footer></Footer>
     </Conainer>
   );
 }

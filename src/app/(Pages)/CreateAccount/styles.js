@@ -16,8 +16,8 @@ display: flex;
 
       height:auto;
       overflow: visible;
-      padding-top: 80px;
-      padding-bottom: 30px;
+      
+    
 }
 `
 
@@ -36,6 +36,8 @@ export const ContainerIntern = styled.div`
 
       width: 90vw;
       min-width: auto;
+      margin-top:1rem;
+      margin-bottom:1rem;
     }
 
 
