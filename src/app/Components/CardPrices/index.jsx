@@ -6,15 +6,18 @@ import { ContentText, ImageBanner, ImportantContent, Wrapper } from './styles'
 
 
 
-const CardPrices = ({  title, type,   }) => {
+const CardPrices = ({  id , title, type,   }) => {
 
   return (
       
       <Wrapper>
           
-          
+          <ImportantContent>
+        <ImageBanner src={
+          `https://assets.isthereanydeal.com/${id}/banner600.jpg?t=1733541072`}></ImageBanner>
+                    </ImportantContent>
           <ImportantContent><strong>{ title }</strong></ImportantContent>
-          <ImportantContent><strong>Type: </strong>{ type }</ImportantContent>
+          <ContentText><strong>Type: </strong>{ type }</ContentText>
          
 
     </Wrapper>

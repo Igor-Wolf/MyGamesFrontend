@@ -1,30 +1,25 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
-
-    display: flex;
+display: flex;
     flex-direction: row;
     color: white;
-    width:100%;
-    justify-content: center;
+    width: 100%;
+    transition: all 0.3s ease-in-out; /* Transição suave para todas as propriedades */
     align-items: center;
-
+    justify-content: center;
     &:hover {
         opacity: 0.6;
         cursor: pointer;
         background-color: #747825;
-        
+        transform: scale(1.05); /* Aumenta o tamanho do componente quando passar o mouse */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra para dar a sensação de flutuar */
     }
 
-
     @media (max-width: 900px) {
-
         justify-content: space-evenly;
         gap: 2rem;
     }
-
-    
-
 `
     
 

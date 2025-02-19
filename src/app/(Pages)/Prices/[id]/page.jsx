@@ -236,6 +236,8 @@ export default function Prices() {
                   <Highlight>
                     <strong>Deals</strong>
                   </Highlight>
+                  <ScrollContainer>
+                    
                   <InternalBox1>
                     {pGeneral.length > 0 && pGeneral[0].deals
                       ? pGeneral[0].deals.map((item, index) => {
@@ -384,7 +386,9 @@ export default function Prices() {
                           );
                         })
                       : ""}
-                  </InternalBox1>
+                    </InternalBox1>
+                    </ScrollContainer>
+
                 </SubContent>
                 <SubContent>
                   <Highlight>

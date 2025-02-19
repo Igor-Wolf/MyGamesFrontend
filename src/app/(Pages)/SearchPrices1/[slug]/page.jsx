@@ -85,6 +85,7 @@ export default function SearchPrices1({ params }) {
                 <Link key={game.id} href={`/Prices/${game.id}`}>
                   <CardPrices
                     key={game.id}
+                    id={game.id}
                     title={game.title || ""}
                     type={game.type || ""}
                   ></CardPrices>

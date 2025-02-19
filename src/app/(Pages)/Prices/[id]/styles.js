@@ -461,9 +461,8 @@ export const ScrollContainer = styled.div`
 
     
     width: 100%;
-    height: 600px;
-    overflow-y: scroll;
-    border: 1px solid gray;
+    height: 650px;
+    overflow-y: auto;
 
 
     @media (max-width: 400px) {

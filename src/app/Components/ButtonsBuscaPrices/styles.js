@@ -19,11 +19,12 @@ export const BtnContainer = styled.div`
 `
 export const ImputSearch = styled.input`
 
-    border-radius: .5rem;
-    padding: 0.5;
+    border-radius: .8rem;
+    padding: 0.5rem;
     min-height: 1rem;
     width: 400px;
-    height: 30px;
+    height: 40px;
+    
 
     @media (max-width: 768px) { 
 
