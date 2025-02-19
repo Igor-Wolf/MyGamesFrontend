@@ -32,6 +32,8 @@ export const ContainerIntern = styled.div`
     border-radius: 1rem;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 1rem;
+
 
     @media (max-width: 768px) {
 
@@ -190,6 +192,9 @@ export const VideoBgColor = styled.video`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -1; /* Coloca o vídeo atrás do conteúdo */
+  @media (max-width: 768px) {
+    width:100%;
+    height:100%;}
   
 `
 

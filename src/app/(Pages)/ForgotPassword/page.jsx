@@ -27,6 +27,7 @@ import { useRouter } from "next/navigation";
 import { Divisor } from "@/app/Components/Divisor";
 import Link from "next/link";
 import { FooterExternal } from "@/app/Components/FooterExternal";
+import { LogoText } from "../Login/styles";
 
 // ------------------------------------------------------Esquema de validação
 const loginSchema = yup
@@ -88,9 +89,9 @@ export default function ForgotPassword() {
           <source src="/assets/quarto.mp4"></source>
         </VideoBg>
         <VideoBgColor></VideoBgColor>
+        <LogoText>MY GAMES</LogoText>
         <ContainerIntern>
           <Title>Forgot my password</Title>
-
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Text>Enter the registered email</Text>
             <Divisor></Divisor>

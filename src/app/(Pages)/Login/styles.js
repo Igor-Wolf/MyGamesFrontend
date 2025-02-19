@@ -32,6 +32,7 @@ export const ContainerIntern = styled.div`
     border-radius: 1rem;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 1rem;
 
     @media (max-width: 768px) {
 
@@ -42,6 +43,17 @@ min-width: auto;
 
 `
 
+export const LogoText = styled.div`
+
+  font-size: 3rem;
+  font-weight:600;
+  color: rgb(21, 117, 9);
+  margin: 0.5rem;
+  text-shadow: 
+  -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7), 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 8px rgba(0, 0, 0, 0.9);
+  
+
+`
 export const Title = styled.div`
 
   font-size: 1.5rem;
@@ -229,6 +241,9 @@ export const VideoBgColor = styled.video`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -1; /* Coloca o vídeo atrás do conteúdo */
+  @media (max-width: 768px) {
+    width:100%;
+    height:100%;}
   
 `
 

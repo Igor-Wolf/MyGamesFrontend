@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Container, ContainerIntern, Form, FormGroup, Label, Input, ErrorBox, VideoBg, VideoBgColor, Title, Wrapper, Text, TextLink, TextLink2, Wrapper2, RememberPass, Text2, TextRsponse } from "./styles";
+import { Container, ContainerIntern, Form, FormGroup, Label, Input, ErrorBox, VideoBg, VideoBgColor, Title, Wrapper, Text, TextLink, TextLink2, Wrapper2, RememberPass, Text2, TextRsponse, LogoText } from "./styles";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -92,7 +92,8 @@ const req = async (body) => {
       <VideoBg autoPlay loop muted playsInline>
           <source src="/assets/quarto.mp4"></source>
       </VideoBg>
-      <VideoBgColor></VideoBgColor>
+        <VideoBgColor></VideoBgColor>
+        <LogoText>MY GAMES</LogoText>
       <ContainerIntern>
         <Title>Login</Title>
         

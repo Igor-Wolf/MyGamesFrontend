@@ -16,6 +16,7 @@ import {
   Text,
   TextLink,
   TextRsponse,
+  LogoText,
 } from "./styles";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -111,6 +112,7 @@ export default function CreateAccount() {
           <source src="/assets/quarto.mp4"></source>
         </VideoBg>
         <VideoBgColor></VideoBgColor>
+        <LogoText>MY GAMES</LogoText>
         <ContainerIntern>
           <Title>Create Account</Title>
 

@@ -27,6 +27,7 @@ import { useRouter, useParams } from "next/navigation";
 import { Divisor } from "@/app/Components/Divisor";
 import Link from "next/link";
 import { FooterExternal } from "@/app/Components/FooterExternal";
+import { LogoText } from "../../Login/styles";
 
 // ------------------------------------------------------Esquema de validação
 const loginSchema = yup
@@ -101,6 +102,8 @@ export default function NewPassword() {
           <source src="/assets/quarto.mp4"></source>
         </VideoBg>
         <VideoBgColor></VideoBgColor>
+        <LogoText>MY GAMES</LogoText>
+
         <ContainerIntern>
           <Title>New Password</Title>
 

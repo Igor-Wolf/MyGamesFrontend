@@ -36,10 +36,21 @@ export const ContainerIntern = styled.div`
 
       width: 90vw;
       min-width: auto;
-      margin-top:1rem;
+      
       margin-bottom:1rem;
     }
 
+
+`
+export const LogoText = styled.div`
+
+  font-size: 3rem;
+  font-weight:600;
+  color: rgb(21, 117, 9);
+  margin: 0.5rem;
+  text-shadow: 
+  -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7), 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 8px rgba(0, 0, 0, 0.9);
+  
 
 `
 
