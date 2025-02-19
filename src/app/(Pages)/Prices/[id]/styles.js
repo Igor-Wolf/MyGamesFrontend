@@ -466,14 +466,14 @@ export const ScrollContainer = styled.div`
 
     
     width: 100%;
-    height: 650px;
+    max-height: 650px;
     overflow-y: auto;
     overflow-x: hidden;
 
 
     @media (max-width: 400px) {
 
-        height: 250px;}
+        max-height: 250px;}
         
 `
 
