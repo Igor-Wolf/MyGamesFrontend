@@ -69,11 +69,14 @@ export const ContainerRow = styled.div`
     flex-wrap: wrap;
     width:100vw;
     border: 1px solid gray;
+    transition: all 0.3s ease-in-out; /* Transição suave para todas as propriedades */
+
 
     &:hover {
         opacity: 0.6;
         cursor: pointer;
         background-color: #747825;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra para dar a sensação de flutuar */
         
     }
 
